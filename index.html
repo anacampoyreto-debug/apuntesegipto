@@ -982,29 +982,23 @@
     }
 
     function toggleModel(id){
-      const el = document.getElementById(id);
-      if(el) el.classList.toggle("show");
-    }
+     function getPrimaryAnswer(blank){
+  if (!blank || !blank.answers || !blank.answers.length) return "";
+  return blank.answers[0];
+}
 
-    function createBlanks(blanks,prefix,title="Mini esquema a completar"){
-      return `
-        <div class="card">
-          <h3>${title}</h3>
-          <div class="blanks">
-            ${blanks.map((b,i)=>`
-              <div class="blank-row">
-                <label>${b.label}</label>
-                <input type="text" id="${prefix}_blank_${i}" placeholder="Escribe aquí">
-              </div>
-            `).join("")}
-          </div>
-          <div class="actions">
-            <button class="btn-primary" onclick='checkBlanks("${prefix}", ${JSON.stringify(blanks).replace(/"/g,"&quot;")})'>Corregir esquema</button>
-          </div>
-          <div class="feedback" id="${prefix}_blank_feedback"></div>
-        </div>
-      `;
-    }
+function buildOptionsForBlank(blanks, index){
+  const correct = getPrimaryAnswer(blanks[index]);
+
+  const pool = blanks
+    .map((b, i) => i !== index ? getPrimaryAnswer(b) : null)
+    .filter(Boolean);
+
+  const uniquePool = [...new Set(pool)];
+  const distractors = shuffle(uniquePool).slice(0, 3);
+
+  return shuffle([correct, ...distractors]);
+}
 
     function createMCQ(mcq,prefix,title="3 preguntas tipo test"){
       return `
@@ -1135,52 +1129,61 @@
             ${createMCQ(screen.mixedTest,prefix+"_mix","1. Test mezclado")}
             ${createBlanks(screen.mixedBlanks,prefix+"_mixed","2. Mini esquema mixto")}
 
-            <div class="card challenge">
-              <h3>3. Detecta el error</h3>
-              <p class="small">Lee cada frase, detecta qué está mal y luego comprueba la corrección.</p>
-              <div class="error-box">
-                ${screen.errorItems.map((item,i)=>`
-                  <div class="error-item">
-                    <p><strong>Frase ${i+1}:</strong> ${item.wrong}</p>
-                    <button class="btn-secondary" onclick='toggleModel("${prefix}_error_${i}")'>Ver corrección</button>
-                    <div class="model" id="${prefix}_error_${i}">
-                      ${item.correction}
-                    </div>
-                  </div>
-                `).join("")}
-              </div>
+           function createBlanks(blanks,prefix,title="Mini esquema a completar"){
+  return `
+    <div class="card">
+      <h3>${title}</h3>
+      <div class="blanks">
+        ${blanks.map((b,i)=> {
+          const options = buildOptionsForBlank(blanks, i);
+          return `
+            <div class="blank-row">
+              <label>${b.label}</label>
+              <select id="${prefix}_blank_${i}">
+                <option value="">Selecciona una opción</option>
+                ${options.map(op => `<option value="${op}">${op}</option>`).join("")}
+              </select>
             </div>
+          `;
+        }).join("")}
+      </div>
+      <div class="actions">
+        <button class="btn-primary" onclick='checkBlanks("${prefix}", ${JSON.stringify(blanks).replace(/"/g,"&quot;")})'>Comprobar esquema</button>
+      </div>
+      function checkBlanks(prefix, raw){
+  const blanks = typeof raw === "string" ? JSON.parse(raw) : raw;
+  let score = 0;
+  let feedbackLines = [];
 
-            <div class="card">
-              <h3>4. Pregunta corta global</h3>
-              <div class="question">
-                <p>${screen.shortGlobal.q}</p>
-                <textarea placeholder="Escribe tu respuesta..."></textarea>
-                <div class="actions">
-                  <button class="btn-secondary" onclick='toggleModel("${prefix}_global_model")'>Ver modelo final</button>
-                </div>
-                <div class="model" id="${prefix}_global_model">
-                  <strong>Modelo final:</strong><br>${screen.shortGlobal.model}
-                </div>
-              </div>
-            </div>
-          </div>
+  blanks.forEach((b,i)=>{
+    const select = document.getElementById(`${prefix}_blank_${i}`);
+    const value = normalize(select.value);
+    const good = b.answers.some(a => normalize(a) === value);
 
-          <div>
-            <div class="card">
-              <h3>5. Cómo usar este reto</h3>
-              <p class="small">
-                1. Haz el test mezclado.<br>
-                2. Completa el esquema mixto.<br>
-                3. Detecta y corrige errores.<br>
-                4. Responde la pregunta global.<br>
-                5. Revisa el modelo final.
-              </p>
-            </div>
-          </div>
-        </div>
-      `;
+    select.style.borderColor = good ? "#8fc79b" : "#d7a18f";
+    select.style.background = good ? "#f2fbf5" : "#fff4f1";
+
+    if(good){
+      score++;
+    } else {
+      feedbackLines.push(
+        `<div><strong>${b.label}:</strong> correcto → ${getPrimaryAnswer(b)}</div>`
+      );
     }
+  });
+
+  const ok = score === blanks.length;
+
+  setFeedback(
+    `${prefix}_blank_feedback`,
+    ok,
+    ok
+      ? `Perfecto: ${score}/${blanks.length}.`
+      : `Has acertado ${score}/${blanks.length}.<br><br>${feedbackLines.join("")}`
+  );
+
+  if(ok) markDone();
+}
 
     function createFinalExam(prefix){
       const bankMcq = [
@@ -1284,26 +1287,69 @@
             <div>
               ${createShort(s.short,prefix,"E-F. Dos preguntas cortas + modelos")}
               ${createMiniExam(s,prefix)}
-            </div>
-          </div>
-        `;
-      } else if(s.type === "challenge"){
-        html += createChallenge(s,prefix);
-      } else if(s.type === "final"){
-        html += createFinalExam(prefix);
-      }
+           function createMiniExam(screen,prefix){
+  const mcqItem = screen.mcq[Math.floor(Math.random()*screen.mcq.length)];
+  const blankItem = screen.blanks[Math.floor(Math.random()*screen.blanks.length)];
+  const tfItem = screen.tf[Math.floor(Math.random()*screen.tf.length)];
+  const shortItem = screen.short[Math.floor(Math.random()*screen.short.length)];
 
-      html += `
-        <div class="meta-nav">
-          <button class="btn-secondary" ${state.current===0 ? "disabled" : ""} onclick="goPrev()">← Anterior</button>
-          <button class="btn-primary" ${state.current===screens.length-1 ? "disabled" : ""} onclick="goNext()">Siguiente →</button>
+  const miniOptions = shuffle([
+    getPrimaryAnswer(blankItem),
+    ...shuffle(
+      screen.blanks
+        .filter(b => b.label !== blankItem.label)
+        .map(getPrimaryAnswer)
+        .filter(Boolean)
+    ).slice(0,3)
+  ]);
+
+  return `
+    <div class="card challenge">
+      <h3>Mini examen aleatorio de esta pantalla</h3>
+
+      <div class="question">
+        <p>1. Test: ${mcqItem.q}</p>
+        <div class="options">
+          ${mcqItem.options.map((op,i)=>`
+            <label class="option">
+              <input type="radio" name="${prefix}_exam_mcq" value="${i}">
+              <span>${op}</span>
+            </label>
+          `).join("")}
         </div>
-      `;
+      </div>
 
-      screenContainer.innerHTML = html;
-      prevBtn.disabled = state.current===0;
-      nextBtn.disabled = state.current===screens.length-1;
-    }
+      <div class="question">
+        <p>2. Completa: ${blankItem.label}</p>
+        <select id="${prefix}_exam_blank">
+          <option value="">Selecciona una opción</option>
+          ${miniOptions.map(op => `<option value="${op}">${op}</option>`).join("")}
+        </select>
+      </div>
+
+      <div class="question">
+        <p>3. Verdadero o falso: ${tfItem.q}</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="${prefix}_exam_tf" value="true"><span>Verdadero</span></label>
+          <label class="option"><input type="radio" name="${prefix}_exam_tf" value="false"><span>Falso</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. Pregunta corta: ${shortItem.q}</p>
+        <textarea id="${prefix}_exam_short" placeholder="Escribe tu respuesta..."></textarea>
+        <div class="model show">
+          <strong>Modelo orientativo:</strong><br>${shortItem.model}
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-accent" onclick='checkMiniExam("${prefix}", ${JSON.stringify(mcqItem).replace(/"/g,"&quot;")}, ${JSON.stringify(blankItem).replace(/"/g,"&quot;")}, ${JSON.stringify(tfItem).replace(/"/g,"&quot;")})'>Corregir mini examen</button>
+      </div>
+      <div class="feedback" id="${prefix}_exam_feedback"></div>
+    </div>
+  `;
+}
 
     function goPrev(){
       if(state.current > 0){
