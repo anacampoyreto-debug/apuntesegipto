@@ -1,15 +1,744 @@
-<style>
-  .boton-miniweb{
-    display:inline-block;
-    padding:12px 20px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-  }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesopotamia y Egipto · Miniweb de estudio</title>
+  <style>
+    :root{
+      --bg:#f7f0e3;
+      --card:#fffaf2;
+      --card-2:#fcf6ec;
+      --text:#3c2d21;
+      --muted:#7a6858;
+      --line:#dec9b1;
+      --primary:#8b5e3c;
+      --primary-2:#b07a4f;
+      --accent:#d6a24a;
+      --ok:#3d7b4f;
+      --danger:#b14f4f;
+      --shadow:0 14px 35px rgba(92,68,44,.10);
+      --radius-xl:26px;
+      --radius-lg:18px;
+      --radius-md:12px;
+    }
 
-  .boton-miniweb:hover{
-    background:#1d4ed8;
-  }
-</style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#f9f4ec 0%, #f3eadc 100%);
+      color:var(--text);
+    }
+
+    .wrap{
+      width:min(1100px, 94vw);
+      margin:0 auto;
+      padding:22px 0 60px;
+    }
+
+    .hero{
+      background:linear-gradient(135deg,#7b5639,#aa744b,#d6a24a);
+      color:#fffaf3;
+      border-radius:var(--radius-xl);
+      padding:28px 24px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      margin:0 0 10px;
+      font-size:clamp(1.8rem,3vw,2.8rem);
+      line-height:1.1;
+    }
+
+    .hero p{
+      margin:0;
+      max-width:850px;
+      line-height:1.55;
+      color:#fff4e5;
+    }
+
+    .topbar{
+      display:grid;
+      grid-template-columns:1fr auto auto;
+      gap:12px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .box{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow);
+    }
+
+    .progress-box{
+      padding:14px 16px;
+    }
+
+    .progress-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .pill{
+      display:inline-block;
+      background:#f7efe1;
+      border:1px solid #ead8c1;
+      color:#6b4d34;
+      padding:7px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:.92rem;
+    }
+
+    .bar{
+      height:12px;
+      background:#e9dccb;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .bar span{
+      display:block;
+      height:100%;
+      width:0;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      transition:width .3s ease;
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      padding:10px;
+    }
+
+    .jump{
+      padding:10px 12px;
+      min-width:230px;
+    }
+
+    .jump label{
+      display:block;
+      font-size:.9rem;
+      color:var(--muted);
+      margin-bottom:6px;
+      font-weight:700;
+    }
+
+    select, input[type="text"], textarea{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 12px;
+      background:white;
+      color:var(--text);
+      font-family:inherit;
+      font-size:.95rem;
+    }
+
+    textarea{
+      min-height:84px;
+      resize:vertical;
+    }
+
+    button{
+      border:none;
+      border-radius:12px;
+      padding:12px 16px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:.95rem;
+      transition:transform .12s ease, opacity .2s ease;
+    }
+
+    button:hover{transform:translateY(-1px)}
+    button:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+    .btn-primary{background:var(--primary);color:white}
+    .btn-secondary{background:#eadbc7;color:#5e4330}
+    .btn-accent{background:var(--accent);color:#4a331d}
+
+    .screen{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+
+    .screen-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+
+    .screen-head h2{
+      margin:0 0 6px;
+      font-size:clamp(1.35rem,2vw,2rem);
+      color:#5d412b;
+    }
+
+    .screen-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.5;
+      max-width:840px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+    }
+
+    .card{
+      background:var(--card-2);
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      padding:16px;
+      margin-bottom:14px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      color:#6a4930;
+      font-size:1rem;
+    }
+
+    .lead{
+      background:#fffaf3;
+      line-height:1.65;
+    }
+
+    .blanks{
+      display:grid;
+      gap:10px;
+    }
+
+    .blank-row{
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:10px;
+      align-items:center;
+    }
+
+    .blank-row label{
+      font-weight:700;
+      color:#65472f;
+    }
+
+    .question{
+      padding:12px 0;
+      border-top:1px dashed #dcc9b4;
+    }
+
+    .question:first-child{
+      border-top:none;
+      padding-top:0;
+    }
+
+    .question p{
+      margin:0 0 10px;
+      font-weight:700;
+      line-height:1.45;
+    }
+
+    .options{
+      display:grid;
+      gap:8px;
+    }
+
+    .option{
+      display:flex;
+      gap:8px;
+      align-items:flex-start;
+      background:white;
+      border:1px solid #e9d8c7;
+      border-radius:12px;
+      padding:10px 12px;
+    }
+
+    .actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .feedback{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:700;
+      display:none;
+    }
+
+    .feedback.show{display:block}
+    .feedback.ok{
+      display:block;
+      background:#eef8f1;
+      border:1px solid #bdddc5;
+      color:var(--ok);
+    }
+
+    .feedback.bad{
+      display:block;
+      background:#fff1ef;
+      border:1px solid #efc2bc;
+      color:var(--danger);
+    }
+
+    .model{
+      display:none;
+      margin-top:8px;
+      background:#fff7ea;
+      border:1px solid #ebd4aa;
+      border-radius:12px;
+      padding:10px 12px;
+    }
+
+    .model.show{display:block}
+
+    .challenge{
+      background:linear-gradient(180deg,#fffaf3 0%, #f8efdf 100%);
+    }
+
+    .meta-nav{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .footer{
+      margin-top:18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media (max-width:980px){
+      .topbar{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .controls{justify-content:center;flex-wrap:wrap}
+    }
+
+    @media (max-width:620px){
+      .blank-row{grid-template-columns:1fr}
+      .screen{padding:16px}
+      .controls button{flex:1 1 140px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Mesopotamia y Egipto</h1>
+      <p>
+        Miniweb de estudio con pantallas guiadas, preguntas, esquemas, retos y comparación final.
+        Todo en un solo archivo para usar en clase o en casa.
+      </p>
+    </section>
+
+    <div class="topbar">
+      <div class="box progress-box">
+        <div class="progress-row">
+          <span class="pill" id="screenPill">Pantalla 1</span>
+          <span class="pill" id="progressPill">Progreso: 0%</span>
+        </div>
+        <div class="bar"><span id="progressBar"></span></div>
+      </div>
+
+      <div class="box controls">
+        <button class="btn-secondary" id="prevBtn">← Anterior</button>
+        <button class="btn-primary" id="nextBtn">Siguiente →</button>
+      </div>
+
+      <div class="box jump">
+        <label for="jumpSelect">Ir a una pantalla</label>
+        <select id="jumpSelect"></select>
+      </div>
+    </div>
+
+    <main class="screen" id="screenContainer"></main>
+
+    <div class="footer">
+      Web en un solo archivo · lista para GitHub Pages
+    </div>
+  </div>
+
+  <script>
+    const screens = [
+      {
+        title:"Pantalla 1 · Mapa global",
+        subtitle:"Primera visión general del tema.",
+        type:"normal",
+        text:"La Edad Antigua comenzó hacia el 3000 a. C. en el Oriente Próximo, dentro del Creciente Fértil. Allí destacaron Mesopotamia y Egipto, civilizaciones hidráulicas que aprovecharon grandes ríos. El control del agua favoreció la agricultura, el crecimiento de la población y una organización social más compleja. En este contexto apareció la escritura, que marca el inicio de la Historia.",
+        blanks:[
+          {label:"Fecha", answers:["3000 a c","3000 ac","hacia el 3000 a c"]},
+          {label:"Lugar", answers:["oriente proximo","creciente fertil"]},
+          {label:"Civilizaciones", answers:["mesopotamia y egipto","egipto y mesopotamia"]},
+          {label:"Ríos", answers:["tigris eufrates y nilo","nilo tigris y eufrates"]},
+          {label:"Escrituras", answers:["cuneiforme y jeroglifica","jeroglifica y cuneiforme"]}
+        ],
+        mcq:[
+          {q:"¿Qué hecho marca el inicio de la Historia?", options:["La agricultura","La escritura","La rueda"], correct:1},
+          {q:"¿Qué dos civilizaciones se estudian aquí?", options:["Roma y Grecia","Mesopotamia y Egipto","Fenicia y Persia"], correct:1},
+          {q:"¿Dónde comenzó este proceso?", options:["Oriente Próximo","América","Oceanía"], correct:0}
+        ],
+        tf:[
+          {q:"Mesopotamia y Egipto fueron civilizaciones hidráulicas.", correct:true},
+          {q:"La Edad Antigua comenzó en la Edad Media.", correct:false}
+        ],
+        short:[
+          {q:"Explica por qué se llaman civilizaciones hidráulicas.", model:"Se llaman así porque aprovecharon el agua de grandes ríos para desarrollar la agricultura."},
+          {q:"Di por qué la escritura fue tan importante.", model:"Fue importante porque permitió controlar sociedades complejas y marcó el inicio de la Historia."}
+        ]
+      },
+      {
+        title:"Pantalla 2 · Mesopotamia",
+        subtitle:"Base territorial y política.",
+        type:"normal",
+        text:"Mesopotamia surgió entre los ríos Tigris y Éufrates. Su nombre significa 'entre ríos'. Se organizó en ciudades-Estado independientes, cada una con su propio rey. También tenían importancia los sacerdotes, los funcionarios y el ejército. La artesanía y el comercio ayudaron al crecimiento de estas ciudades.",
+        blanks:[
+          {label:"Ríos", answers:["tigris y eufrates"]},
+          {label:"Significado", answers:["entre rios"]},
+          {label:"Organización", answers:["ciudades estado","ciudades-estado"]},
+          {label:"Jefe político", answers:["rey"]},
+          {label:"Otros grupos", answers:["sacerdotes funcionarios y ejercito"]}
+        ],
+        mcq:[
+          {q:"¿Qué significa Mesopotamia?", options:["Tierra del Sol","Entre ríos","Tierra negra"], correct:1},
+          {q:"¿Cómo se organizó?", options:["En ciudades-Estado","En provincias romanas","En feudos"], correct:0},
+          {q:"¿Quién gobernaba cada ciudad?", options:["El faraón","El rey","El escriba"], correct:1}
+        ],
+        tf:[
+          {q:"Mesopotamia se situó junto al Nilo.", correct:false},
+          {q:"El ejército era importante en las ciudades mesopotámicas.", correct:true}
+        ],
+        short:[
+          {q:"¿Qué era una ciudad-Estado?", model:"Era una ciudad principal con sus campos alrededor que funcionaba de manera independiente."},
+          {q:"¿Por qué crecieron las ciudades mesopotámicas?", model:"Crecieron gracias a la agricultura, la artesanía y el comercio."}
+        ]
+      },
+      {
+        title:"Pantalla 3 · Egipto",
+        subtitle:"Nilo, Narmer y faraón.",
+        type:"normal",
+        text:"Egipto se desarrolló en torno al río Nilo. Hacia el 3000 a. C., Narmer unificó el Alto y el Bajo Egipto. Desde entonces, el faraón tuvo poder absoluto en lo político, militar y religioso. Además, era considerado un dios y gobernaba con ayuda de funcionarios y sacerdotes.",
+        blanks:[
+          {label:"Río", answers:["nilo"]},
+          {label:"Rey unificador", answers:["narmer"]},
+          {label:"Territorios", answers:["alto egipto y bajo egipto","bajo egipto y alto egipto"]},
+          {label:"Gobernante", answers:["faraon"]},
+          {label:"Tipo de poder", answers:["absoluto"]}
+        ],
+        mcq:[
+          {q:"¿En torno a qué río surgió Egipto?", options:["Nilo","Tigris","Éufrates"], correct:0},
+          {q:"¿Quién unificó Egipto?", options:["Narmer","Hammurabi","Ciro"], correct:0},
+          {q:"¿Cómo era el poder del faraón?", options:["Limitado","Absoluto","Solo religioso"], correct:1}
+        ],
+        tf:[
+          {q:"Narmer unificó Egipto.", correct:true},
+          {q:"El faraón no tenía relación con la religión.", correct:false}
+        ],
+        short:[
+          {q:"Explica por qué el faraón tenía tanto poder.", model:"Porque gobernaba en lo político, militar y religioso y además era considerado un dios."},
+          {q:"¿Qué importancia tuvo Narmer?", model:"Narmer fue importante porque unificó el Alto y el Bajo Egipto."}
+        ]
+      },
+      {
+        title:"Pantalla 4 · Comparación final",
+        subtitle:"Mesopotamia frente a Egipto.",
+        type:"normal",
+        text:"Mesopotamia y Egipto fueron civilizaciones hidráulicas, pero no eran iguales. Mesopotamia se desarrolló junto al Tigris y el Éufrates y se organizó en ciudades-Estado. Egipto surgió junto al Nilo y formó un Estado unificado bajo el faraón. Ambas desarrollaron escritura, religión politeísta y arte al servicio del poder y de los dioses.",
+        blanks:[
+          {label:"Ríos mesopotámicos", answers:["tigris y eufrates"]},
+          {label:"Río egipcio", answers:["nilo"]},
+          {label:"Política mesopotámica", answers:["ciudades estado","ciudades-estado"]},
+          {label:"Política egipcia", answers:["estado unificado con faraon","faraon con poder absoluto"]},
+          {label:"Religión", answers:["politeista"]}
+        ],
+        mcq:[
+          {q:"¿Qué edificio religioso se asocia a Mesopotamia?", options:["Zigurat","Hipogeo","Pirámide"], correct:0},
+          {q:"¿Qué gobernante se asocia a Egipto?", options:["Faraón","Cónsul","Emperador"], correct:0},
+          {q:"¿Qué tenían en común ambas civilizaciones?", options:["Politeísmo","Democracia","Cristianismo"], correct:0}
+        ],
+        tf:[
+          {q:"Mesopotamia y Egipto fueron civilizaciones hidráulicas.", correct:true},
+          {q:"En Egipto había ciudades-Estado independientes como base política.", correct:false}
+        ],
+        short:[
+          {q:"Escribe una diferencia básica entre Mesopotamia y Egipto.", model:"Mesopotamia se organizó en ciudades-Estado junto al Tigris y el Éufrates, mientras que Egipto fue un Estado unificado en torno al Nilo."},
+          {q:"Escribe una semejanza entre ambas.", model:"Ambas fueron civilizaciones hidráulicas y politeístas, y desarrollaron escritura y arte."}
+        ]
+      }
+    ];
+
+    const state = { current:0, done:new Set() };
+
+    const screenContainer = document.getElementById("screenContainer");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const jumpSelect = document.getElementById("jumpSelect");
+    const screenPill = document.getElementById("screenPill");
+    const progressPill = document.getElementById("progressPill");
+    const progressBar = document.getElementById("progressBar");
+
+    function normalize(str){
+      return (str || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/[.,;:¡!¿?()"]/g,"")
+        .replace(/\s+/g," ")
+        .trim();
+    }
+
+    function updateProgress(){
+      const pct = Math.round((state.done.size / screens.length) * 100);
+      progressPill.textContent = "Progreso: " + pct + "%";
+      progressBar.style.width = pct + "%";
+    }
+
+    function fillJump(){
+      jumpSelect.innerHTML = "";
+      screens.forEach((s,i)=>{
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = s.title;
+        jumpSelect.appendChild(opt);
+      });
+      jumpSelect.value = state.current;
+    }
+
+    function setFeedback(id, ok, msg){
+      const box = document.getElementById(id);
+      if(!box) return;
+      box.className = "feedback " + (ok ? "ok" : "bad");
+      box.innerHTML = msg;
+    }
+
+    function toggleModel(id){
+      const el = document.getElementById(id);
+      if(el) el.classList.toggle("show");
+    }
+
+    function markDone(){
+      state.done.add(state.current);
+      updateProgress();
+    }
+
+    function createBlanks(blanks,prefix){
+      return `
+        <div class="card">
+          <h3>Esquema a completar</h3>
+          <div class="blanks">
+            ${blanks.map((b,i)=>`
+              <div class="blank-row">
+                <label>${b.label}</label>
+                <input type="text" id="${prefix}_blank_${i}" placeholder="Escribe aquí">
+              </div>
+            `).join("")}
+          </div>
+          <div class="actions">
+            <button class="btn-primary" onclick='checkBlanks("${prefix}", ${JSON.stringify(blanks).replace(/"/g,"&quot;")})'>Corregir esquema</button>
+          </div>
+          <div class="feedback" id="${prefix}_blank_feedback"></div>
+        </div>
+      `;
+    }
+
+    function createMCQ(mcq,prefix){
+      return `
+        <div class="card">
+          <h3>3 preguntas tipo test</h3>
+          ${mcq.map((q,i)=>`
+            <div class="question">
+              <p>${i+1}. ${q.q}</p>
+              <div class="options">
+                ${q.options.map((op,j)=>`
+                  <label class="option">
+                    <input type="radio" name="${prefix}_mcq_${i}" value="${j}">
+                    <span>${op}</span>
+                  </label>
+                `).join("")}
+              </div>
+            </div>
+          `).join("")}
+          <div class="actions">
+            <button class="btn-primary" onclick='checkMCQ("${prefix}", ${JSON.stringify(mcq).replace(/"/g,"&quot;")})'>Corregir test</button>
+          </div>
+          <div class="feedback" id="${prefix}_mcq_feedback"></div>
+        </div>
+      `;
+    }
+
+    function createTF(tf,prefix){
+      return `
+        <div class="card">
+          <h3>2 verdadero o falso</h3>
+          ${tf.map((q,i)=>`
+            <div class="question">
+              <p>${i+1}. ${q.q}</p>
+              <div class="options">
+                <label class="option"><input type="radio" name="${prefix}_tf_${i}" value="true"><span>Verdadero</span></label>
+                <label class="option"><input type="radio" name="${prefix}_tf_${i}" value="false"><span>Falso</span></label>
+              </div>
+            </div>
+          `).join("")}
+          <div class="actions">
+            <button class="btn-primary" onclick='checkTF("${prefix}", ${JSON.stringify(tf).replace(/"/g,"&quot;")})'>Corregir verdadero/falso</button>
+          </div>
+          <div class="feedback" id="${prefix}_tf_feedback"></div>
+        </div>
+      `;
+    }
+
+    function createShort(short,prefix){
+      return `
+        <div class="card">
+          <h3>2 preguntas cortas</h3>
+          ${short.map((q,i)=>`
+            <div class="question">
+              <p>${i+1}. ${q.q}</p>
+              <textarea placeholder="Escribe tu respuesta..."></textarea>
+              <div class="actions">
+                <button class="btn-secondary" onclick='toggleModel("${prefix}_model_${i}")'>Ver modelo</button>
+              </div>
+              <div class="model" id="${prefix}_model_${i}">
+                <strong>Modelo:</strong><br>${q.model}
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderScreen(){
+      const s = screens[state.current];
+      const prefix = "s" + state.current;
+
+      screenPill.textContent = `${s.title} · ${state.current + 1}/${screens.length}`;
+      jumpSelect.value = state.current;
+
+      screenContainer.innerHTML = `
+        <div class="screen-head">
+          <div>
+            <h2>${s.title}</h2>
+            <p>${s.subtitle}</p>
+          </div>
+          <span class="pill">Pantalla de estudio</span>
+        </div>
+
+        <div class="grid">
+          <div>
+            <div class="card lead">
+              <h3>Texto breve</h3>
+              <p>${s.text}</p>
+            </div>
+            ${createBlanks(s.blanks,prefix)}
+            ${createMCQ(s.mcq,prefix)}
+          </div>
+          <div>
+            ${createTF(s.tf,prefix)}
+            ${createShort(s.short,prefix)}
+          </div>
+        </div>
+
+        <div class="meta-nav">
+          <button class="btn-secondary" ${state.current===0 ? "disabled" : ""} onclick="goPrev()">← Anterior</button>
+          <button class="btn-primary" ${state.current===screens.length-1 ? "disabled" : ""} onclick="goNext()">Siguiente →</button>
+        </div>
+      `;
+
+      prevBtn.disabled = state.current===0;
+      nextBtn.disabled = state.current===screens.length-1;
+    }
+
+    function goPrev(){
+      if(state.current>0){
+        state.current--;
+        renderScreen();
+      }
+    }
+
+    function goNext(){
+      if(state.current<screens.length-1){
+        state.current++;
+        renderScreen();
+      }
+    }
+
+    function checkBlanks(prefix, raw){
+      const blanks = typeof raw === "string" ? JSON.parse(raw) : raw;
+      let score = 0;
+      blanks.forEach((b,i)=>{
+        const input = document.getElementById(`${prefix}_blank_${i}`);
+        const value = normalize(input.value);
+        const good = b.answers.some(a => normalize(a) === value);
+        input.style.borderColor = good ? "#8fc79b" : "#d7a18f";
+        input.style.background = good ? "#f2fbf5" : "#fff4f1";
+        if(good) score++;
+      });
+      const ok = score === blanks.length;
+      setFeedback(`${prefix}_blank_feedback`, ok, ok ? `Muy bien: ${score}/${blanks.length}.` : `Has acertado ${score}/${blanks.length}.`);
+      if(ok) markDone();
+    }
+
+    function checkMCQ(prefix, raw){
+      const mcq = typeof raw === "string" ? JSON.parse(raw) : raw;
+      let score = 0;
+      mcq.forEach((q,i)=>{
+        const sel = document.querySelector(`input[name="${prefix}_mcq_${i}"]:checked`);
+        if(sel && Number(sel.value) === q.correct) score++;
+      });
+      const ok = score === mcq.length;
+      setFeedback(`${prefix}_mcq_feedback`, ok, ok ? `Excelente: ${score}/${mcq.length}.` : `Resultado: ${score}/${mcq.length}.`);
+      if(ok) markDone();
+    }
+
+    function checkTF(prefix, raw){
+      const tf = typeof raw === "string" ? JSON.parse(raw) : raw;
+      let score = 0;
+      tf.forEach((q,i)=>{
+        const sel = document.querySelector(`input[name="${prefix}_tf_${i}"]:checked`);
+        if(sel && sel.value === String(q.correct)) score++;
+      });
+      const ok = score === tf.length;
+      setFeedback(`${prefix}_tf_feedback`, ok, ok ? `Perfecto: ${score}/${tf.length}.` : `Has acertado ${score}/${tf.length}.`);
+      if(ok) markDone();
+    }
+
+    prevBtn.addEventListener("click", goPrev);
+    nextBtn.addEventListener("click", goNext);
+    jumpSelect.addEventListener("change",(e)=>{
+      state.current = Number(e.target.value);
+      renderScreen();
+    });
+
+    window.goPrev = goPrev;
+    window.goNext = goNext;
+    window.toggleModel = toggleModel;
+    window.checkBlanks = checkBlanks;
+    window.checkMCQ = checkMCQ;
+    window.checkTF = checkTF;
+
+    fillJump();
+    updateProgress();
+    renderScreen();
+  </script>
+</body>
+</html>
