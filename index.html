@@ -1,1307 +1,1119 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tema 2 · Mesopotamia y Egipto</title>
-  <style>
-    :root{
-      --bg:#f7f0e3;
-      --bg2:#fbf7f0;
-      --card:#fffaf2;
-      --card2:#fcf5ea;
-      --text:#3f2f22;
-      --muted:#7d6a59;
-      --line:#dfc9b1;
-      --primary:#8c5e3c;
-      --primary2:#b27b4f;
-      --accent:#d7a54d;
-      --ok:#3e7e50;
-      --bad:#b14f4f;
-      --shadow:0 14px 36px rgba(86,62,40,.10);
-      --radius-xl:26px;
-      --radius-lg:18px;
-      --radius-md:12px;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tema 2 · Mesopotamia y Egipto</title>
+<style>
+  :root{
+    --bg:#f7f0e3;
+    --bg2:#fbf7f0;
+    --card:#fffaf2;
+    --card2:#fcf5ea;
+    --text:#3f2f22;
+    --muted:#7d6a59;
+    --line:#dfc9b1;
+    --primary:#8c5e3c;
+    --primary2:#b27b4f;
+    --accent:#d7a54d;
+    --ok:#3e7e50;
+    --bad:#b14f4f;
+    --shadow:0 14px 36px rgba(86,62,40,.10);
+    --radius-xl:26px;
+    --radius-lg:18px;
+    --radius-md:12px;
+  }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,var(--bg2),var(--bg));
-      color:var(--text);
-    }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
 
-    .wrap{
-      width:min(1180px,94vw);
-      margin:0 auto;
-      padding:20px 0 70px;
-    }
+  body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(180deg,var(--bg2),var(--bg));
+    color:var(--text);
+  }
 
-    .hero{
-      background:linear-gradient(135deg,#7a5437,#ab7449,#d7a54d);
-      color:#fffaf3;
-      border-radius:var(--radius-xl);
-      padding:28px 24px;
-      box-shadow:var(--shadow);
-      margin-bottom:18px;
-    }
+  .wrap{
+    width:min(1180px,94vw);
+    margin:0 auto;
+    padding:20px 0 70px;
+  }
 
-    .hero h1{
-      margin:0 0 10px;
-      font-size:clamp(1.8rem,3vw,2.8rem);
-      line-height:1.1;
-    }
+  .hero{
+    background:linear-gradient(135deg,#7a5437,#ab7449,#d7a54d);
+    color:#fffaf3;
+    border-radius:var(--radius-xl);
+    padding:28px 24px;
+    box-shadow:var(--shadow);
+    margin-bottom:18px;
+  }
 
-    .hero p{
-      margin:0;
-      max-width:900px;
-      line-height:1.55;
-      color:#fff2e1;
-    }
+  .hero h1{
+    margin:0 0 10px;
+    font-size:clamp(1.8rem,3vw,2.8rem);
+    line-height:1.1;
+  }
 
-    .topbar{
-      display:grid;
-      grid-template-columns:1fr auto auto;
-      gap:12px;
-      align-items:center;
-      margin-bottom:18px;
-    }
+  .hero p{
+    margin:0;
+    max-width:900px;
+    line-height:1.55;
+    color:#fff2e1;
+  }
 
-    .box{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius-lg);
-      box-shadow:var(--shadow);
-    }
+  .topbar{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    gap:12px;
+    align-items:center;
+    margin-bottom:18px;
+  }
 
-    .progress-box{padding:14px 16px}
-    .progress-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:10px;
-    }
+  .box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow);
+  }
 
-    .pill{
-      display:inline-block;
-      padding:7px 12px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:.92rem;
-      background:#f7efe2;
-      border:1px solid #ead7bf;
-      color:#6b4c34;
-    }
+  .progress-box{padding:14px 16px}
 
-    .bar{
-      height:12px;
-      background:#ebdfcf;
-      border-radius:999px;
-      overflow:hidden;
-    }
+  .progress-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
 
-    .bar span{
-      display:block;
-      width:0;
-      height:100%;
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-      transition:width .3s ease;
-    }
+  .pill{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.92rem;
+    background:#f7efe2;
+    border:1px solid #ead7bf;
+    color:#6b4c34;
+  }
 
-    .controls{
-      display:flex;
-      gap:10px;
-      padding:10px;
-    }
+  .bar{
+    height:12px;
+    background:#ebdfcf;
+    border-radius:999px;
+    overflow:hidden;
+  }
 
-    .jump{
-      padding:10px 12px;
-      min-width:240px;
-    }
+  .bar span{
+    display:block;
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,var(--primary),var(--accent));
+    transition:width .3s ease;
+  }
 
-    .jump label{
-      display:block;
-      margin-bottom:6px;
-      font-size:.9rem;
-      font-weight:700;
-      color:var(--muted);
-    }
+  .controls{
+    display:flex;
+    gap:10px;
+    padding:10px;
+  }
 
-    select,input[type="text"],textarea{
-      width:100%;
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:10px 12px;
-      font-size:.95rem;
-      background:white;
-      color:var(--text);
-      font-family:inherit;
-    }
+  .jump{
+    padding:10px 12px;
+    min-width:240px;
+  }
 
-    textarea{
-      min-height:86px;
-      resize:vertical;
-    }
+  .jump label{
+    display:block;
+    margin-bottom:6px;
+    font-size:.9rem;
+    font-weight:700;
+    color:var(--muted);
+  }
 
-    button{
-      border:none;
-      border-radius:12px;
-      padding:12px 16px;
-      font-size:.95rem;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .12s ease, opacity .2s ease;
-    }
+  select,input[type="text"],textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+    font-size:.95rem;
+    background:white;
+    color:var(--text);
+    font-family:inherit;
+  }
 
-    button:hover{transform:translateY(-1px)}
-    button:disabled{opacity:.55;cursor:not-allowed;transform:none}
+  textarea{
+    min-height:86px;
+    resize:vertical;
+  }
 
-    .btn-primary{background:var(--primary);color:white}
-    .btn-secondary{background:#eadbc7;color:#5c4230}
-    .btn-accent{background:var(--accent);color:#4a331d}
+  button{
+    border:none;
+    border-radius:12px;
+    padding:12px 16px;
+    font-size:.95rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:transform .12s ease, opacity .2s ease;
+  }
 
-    .screen{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius-xl);
-      box-shadow:var(--shadow);
-      padding:22px;
-    }
+  button:hover{transform:translateY(-1px)}
+  button:disabled{opacity:.55;cursor:not-allowed;transform:none}
 
-    .screen-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
-      flex-wrap:wrap;
-      margin-bottom:16px;
-    }
+  .btn-primary{background:var(--primary);color:white}
+  .btn-secondary{background:#eadbc7;color:#5c4230}
+  .btn-accent{background:var(--accent);color:#4a331d}
 
-    .screen-head h2{
-      margin:0 0 6px;
-      font-size:clamp(1.35rem,2vw,2rem);
-      color:#5d412b;
-    }
+  .screen{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-xl);
+    box-shadow:var(--shadow);
+    padding:22px;
+  }
 
-    .screen-head p{
-      margin:0;
-      color:var(--muted);
-      max-width:850px;
-      line-height:1.5;
-    }
+  .screen-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+  }
 
-    .grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:18px;
-    }
+  .screen-head h2{
+    margin:0 0 6px;
+    font-size:clamp(1.35rem,2vw,2rem);
+    color:#5d412b;
+  }
 
-    .card{
-      background:var(--card2);
-      border:1px solid var(--line);
-      border-radius:var(--radius-lg);
-      padding:16px;
-      margin-bottom:14px;
-    }
+  .screen-head p{
+    margin:0;
+    color:var(--muted);
+    max-width:850px;
+    line-height:1.5;
+  }
 
-    .card h3{
-      margin:0 0 10px;
-      font-size:1rem;
-      color:#6a4930;
-    }
+  .grid{
+    display:grid;
+    grid-template-columns:1.08fr .92fr;
+    gap:18px;
+  }
 
-    .lead{
-      background:#fffaf3;
-      line-height:1.66;
-    }
+  .card{
+    background:var(--card2);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:16px;
+    margin-bottom:14px;
+  }
 
-    .lead ul{
-      margin:8px 0 0 18px;
-      padding:0;
-    }
+  .card h3{
+    margin:0 0 10px;
+    font-size:1rem;
+    color:#6a4930;
+  }
 
-    .lead li{margin:4px 0}
+  .lead{
+    background:#fffaf3;
+    line-height:1.66;
+  }
 
-    .blanks{
-      display:grid;
-      gap:10px;
-    }
+  .lead ul{
+    margin:8px 0 0 18px;
+    padding:0;
+  }
 
-    .blank-row{
-      display:grid;
-      grid-template-columns:200px 1fr;
-      gap:10px;
-      align-items:center;
-    }
+  .lead li{margin:4px 0}
 
-    .blank-row label{
-      font-weight:700;
-      color:#65472f;
-    }
+  .blanks{
+    display:grid;
+    gap:10px;
+  }
 
-    .question{
-      padding:12px 0;
-      border-top:1px dashed #dcc8b4;
-    }
+  .blank-row{
+    display:grid;
+    grid-template-columns:220px 1fr 130px;
+    gap:10px;
+    align-items:center;
+  }
 
-    .question:first-child{
-      border-top:none;
-      padding-top:0;
-    }
+  .blank-row label{
+    font-weight:700;
+    color:#65472f;
+  }
 
-    .question p{
-      margin:0 0 10px;
-      font-weight:700;
-      line-height:1.45;
-    }
+  .mini-state{
+    font-size:.85rem;
+    font-weight:700;
+    text-align:center;
+    border-radius:10px;
+    padding:10px 8px;
+    border:1px solid #e0ccb3;
+    background:#fffaf4;
+    color:var(--muted);
+  }
 
-    .options{
-      display:grid;
-      gap:8px;
-    }
+  .mini-state.ok{
+    background:#eef8f1;
+    border-color:#bdddc5;
+    color:var(--ok);
+  }
 
-    .option{
-      display:flex;
-      gap:8px;
-      align-items:flex-start;
-      background:white;
-      border:1px solid #ead9c6;
-      border-radius:12px;
-      padding:10px 12px;
-    }
+  .mini-state.bad{
+    background:#fff1ef;
+    border-color:#efc2bc;
+    color:var(--bad);
+  }
 
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:12px;
-    }
+  .question{
+    padding:12px 0;
+    border-top:1px dashed #dcc8b4;
+  }
 
-    .feedback{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:700;
-      display:none;
-    }
+  .question:first-child{
+    border-top:none;
+    padding-top:0;
+  }
 
-    .feedback.ok{
-      display:block;
-      background:#eef8f1;
-      border:1px solid #bdddc5;
-      color:var(--ok);
-    }
+  .question p{
+    margin:0 0 10px;
+    font-weight:700;
+    line-height:1.45;
+  }
 
-    .feedback.bad{
-      display:block;
-      background:#fff1ef;
-      border:1px solid #efc2bc;
-      color:var(--bad);
-    }
+  .options{
+    display:grid;
+    gap:8px;
+  }
 
-    .model{
-      display:none;
-      margin-top:8px;
-      background:#fff7ea;
-      border:1px solid #ebd4aa;
-      border-radius:12px;
-      padding:10px 12px;
-    }
+  .option{
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+    background:white;
+    border:1px solid #ead9c6;
+    border-radius:12px;
+    padding:10px 12px;
+  }
 
-    .model.show{display:block}
+  .actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
+  }
 
-    .challenge{
-      background:linear-gradient(180deg,#fffaf3,#f8efdf);
-    }
+  .feedback{
+    margin-top:10px;
+    padding:10px 12px;
+    border-radius:12px;
+    font-weight:700;
+    display:none;
+  }
 
-    .error-box{
-      background:white;
-      border:1px solid #e7d4b9;
-      border-radius:14px;
-      padding:12px;
-      margin-top:8px;
-    }
+  .feedback.ok{
+    display:block;
+    background:#eef8f1;
+    border:1px solid #bdddc5;
+    color:var(--ok);
+  }
 
-    .error-item{
-      border-top:1px dashed #ddcab6;
-      padding:10px 0;
-    }
+  .feedback.bad{
+    display:block;
+    background:#fff1ef;
+    border:1px solid #efc2bc;
+    color:var(--bad);
+  }
 
-    .error-item:first-child{
-      border-top:none;
-      padding-top:0;
-    }
+  .model{
+    display:none;
+    margin-top:8px;
+    background:#fff7ea;
+    border:1px solid #ebd4aa;
+    border-radius:12px;
+    padding:10px 12px;
+  }
 
-    .small{
-      color:var(--muted);
-      font-size:.92rem;
-      line-height:1.5;
-    }
+  .model.show{display:block}
 
-    .meta-nav{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
+  .challenge{
+    background:linear-gradient(180deg,#fffaf3,#f8efdf);
+  }
 
-    .footer{
-      margin-top:18px;
-      text-align:center;
-      color:var(--muted);
-      font-size:.92rem;
-    }
+  .error-box{
+    background:white;
+    border:1px solid #e7d4b9;
+    border-radius:14px;
+    padding:12px;
+    margin-top:8px;
+  }
 
-    @media (max-width:980px){
-      .topbar{grid-template-columns:1fr}
-      .controls{justify-content:center;flex-wrap:wrap}
-      .grid{grid-template-columns:1fr}
-    }
+  .error-item{
+    border-top:1px dashed #ddcab6;
+    padding:10px 0;
+  }
 
-    @media (max-width:640px){
-      .screen{padding:16px}
-      .blank-row{grid-template-columns:1fr}
-      .controls button{flex:1 1 140px}
-    }
-  </style>
+  .error-item:first-child{
+    border-top:none;
+    padding-top:0;
+  }
+
+  .small{
+    color:var(--muted);
+    font-size:.92rem;
+    line-height:1.5;
+  }
+
+  .meta-nav{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:18px;
+  }
+
+  .footer{
+    margin-top:18px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.92rem;
+  }
+
+  @media (max-width:980px){
+    .topbar{grid-template-columns:1fr}
+    .controls{justify-content:center;flex-wrap:wrap}
+    .grid{grid-template-columns:1fr}
+  }
+
+  @media (max-width:640px){
+    .screen{padding:16px}
+    .blank-row{grid-template-columns:1fr}
+    .controls button{flex:1 1 140px}
+  }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <section class="hero">
-      <h1>Tema 2 · Mesopotamia y Egipto</h1>
-      <p>
-        Miniweb completa de repaso con 16 pantallas, 4 retos acumulativos, ejercicios, modelos de respuesta
-        y examen final. Todo en un solo archivo.
-      </p>
-    </section>
+<div class="wrap">
+  <section class="hero">
+    <h1>Tema 2 · Mesopotamia y Egipto</h1>
+    <p>Miniweb completa de repaso con pantallas de estudio, retos acumulativos y examen final. El esquema ahora va con desplegables autocorregibles.</p>
+  </section>
 
-    <div class="topbar">
-      <div class="box progress-box">
-        <div class="progress-row">
-          <span class="pill" id="screenPill">Pantalla 1</span>
-          <span class="pill" id="progressPill">Progreso: 0%</span>
-        </div>
-        <div class="bar"><span id="progressBar"></span></div>
+  <div class="topbar">
+    <div class="box progress-box">
+      <div class="progress-row">
+        <span class="pill" id="screenPill">Pantalla 1</span>
+        <span class="pill" id="progressPill">Progreso: 0%</span>
       </div>
-
-      <div class="box controls">
-        <button class="btn-secondary" id="prevBtn">← Anterior</button>
-        <button class="btn-primary" id="nextBtn">Siguiente →</button>
-      </div>
-
-      <div class="box jump">
-        <label for="jumpSelect">Ir a una pantalla</label>
-        <select id="jumpSelect"></select>
-      </div>
+      <div class="bar"><span id="progressBar"></span></div>
     </div>
 
-    <main class="screen" id="screenContainer"></main>
+    <div class="box controls">
+      <button class="btn-secondary" id="prevBtn">← Anterior</button>
+      <button class="btn-primary" id="nextBtn">Siguiente →</button>
+    </div>
 
-    <div class="footer">
-      Web en un solo archivo · GitHub Pages lista
+    <div class="box jump">
+      <label for="jumpSelect">Ir a una pantalla</label>
+      <select id="jumpSelect"></select>
     </div>
   </div>
 
-  <script>
-    const screens = [
-      {
-        type:"normal",
-        title:"Pantalla 1 · Inicio del tema",
-        subtitle:"Mapa general del tema antes de entrar en cada bloque.",
-        text:"La Edad Antigua comenzó hacia el 3000 a. C. en el Oriente Próximo, dentro del Creciente Fértil. Allí surgieron Mesopotamia y Egipto, conocidas como civilizaciones hidráulicas porque aprovecharon grandes ríos en territorios con poca lluvia. Gracias al control del agua, la agricultura fue próspera y crecieron la población, el comercio y la artesanía. En ese contexto apareció la escritura, que marca el inicio de la Historia.",
-        blanks:[
-          {label:"Fecha", answers:["3000 a c","3000 ac","hacia el 3000 a c"]},
-          {label:"Lugar", answers:["oriente proximo","creciente fertil"]},
-          {label:"Civilizaciones", answers:["mesopotamia y egipto","egipto y mesopotamia"]},
-          {label:"Ríos", answers:["tigris eufrates y nilo","nilo tigris y eufrates"]},
-          {label:"Escrituras", answers:["cuneiforme y jeroglifica","jeroglifica y cuneiforme"]},
-          {label:"Organización política básica", answers:["reyes y faraon","rey y faraon","reyes y faraones"]},
-          {label:"Religión", answers:["politeista"]},
-          {label:"Función del arte", answers:["ensalzar a los poderosos y glorificar a los dioses","glorificar a los dioses y ensalzar a los poderosos","ensalzar a faraones y poderosos y glorificar a los dioses"]}
-        ],
-        mcq:[
-          {q:"¿Qué hecho marca el inicio de la Historia?", options:["La invención del arado","La invención de la escritura","La construcción de pirámides"], correct:1},
-          {q:"¿Dónde comenzó la Edad Antigua?", options:["En Roma","En Oriente Próximo","En la península ibérica"], correct:1},
-          {q:"¿Qué dos civilizaciones se estudian aquí?", options:["Roma y Grecia","Mesopotamia y Egipto","Fenicia y Persia"], correct:1}
-        ],
-        tf:[
-          {q:"Mesopotamia y Egipto fueron civilizaciones hidráulicas.", correct:true},
-          {q:"La Edad Antigua comenzó en el siglo I d. C.", correct:false}
-        ],
-        short:[
-          {q:"Explica por qué Mesopotamia y Egipto se llaman civilizaciones hidráulicas.", model:"Se llaman así porque aprovecharon el agua de grandes ríos para desarrollar una agricultura próspera."},
-          {q:"Di por qué la escritura fue tan importante.", model:"La escritura fue importante porque permitió controlar sociedades complejas y marcó el inicio de la Historia."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 2 · Civilizaciones hidráulicas",
-        subtitle:"Diques, canales, arado, rueda y consecuencias sociales.",
-        text:"Mesopotamia y Egipto se situaban en territorios donde llovía poco, pero por ellos pasaban grandes ríos. Gracias a la construcción de diques, que contenían el agua, y canales, que la llevaban a zonas de cultivo, su agricultura fue muy productiva. También ayudaron inventos como el arado y la rueda, además de avances en cálculo y geometría. El aumento de la producción agrícola hizo crecer la población, el comercio, la artesanía y una sociedad más diversa y jerarquizada.",
-        blanks:[
-          {label:"Diques", answers:["contener el agua","contencion de agua"]},
-          {label:"Canales", answers:["transportar agua a zonas de cultivo","llevar agua a zonas de cultivo","transporte del agua a zonas de cultivo"]},
-          {label:"Inventos", answers:["arado y rueda","rueda y arado"]},
-          {label:"Resultado agrícola", answers:["aumento de la productividad","mayor productividad","mas productividad"]},
-          {label:"Consecuencias", answers:["crecimiento de la poblacion comercio y artesania","poblacion comercio y artesania"]},
-          {label:"Cambio social", answers:["sociedad mas jerarquizada","mas diversa y jerarquizada","jerarquizada"]}
-        ],
-        mcq:[
-          {q:"¿Para qué servían los diques?", options:["Para contener el agua","Para escribir leyes","Para hacer tumbas"], correct:0},
-          {q:"¿Qué llevaban los canales?", options:["Piedra","Agua a los cultivos","Soldados"], correct:1},
-          {q:"¿Qué produjo el aumento agrícola?", options:["Menos población","Más comercio y artesanía","El fin de la jerarquía social"], correct:1}
-        ],
-        tf:[
-          {q:"En estas civilizaciones llovía mucho y por eso no necesitaban ríos.", correct:false},
-          {q:"El arado y la rueda ayudaron a mejorar la productividad.", correct:true}
-        ],
-        short:[
-          {q:"Relaciona control del agua y crecimiento de la población.", model:"El control del agua mejoró la agricultura, hubo más alimentos y por eso creció la población."},
-          {q:"Explica por qué la sociedad se hizo más jerarquizada.", model:"La sociedad se hizo más jerarquizada porque aparecieron más oficios y aumentó el poder de reyes, sacerdotes y funcionarios."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 3 · Invención de la escritura",
-        subtitle:"Fechas, lugares y función básica de los primeros textos.",
-        text:"La escritura surgió hacia el 3300 a. C. en Mesopotamia y sobre el 3150 a. C. en Egipto. Esto supuso el inicio de la Historia y de la Edad Antigua. A partir de entonces podemos estudiar mejor estas sociedades porque dejaron documentos escritos. Los primeros textos se hicieron para controlar sociedades complejas: impuestos, intercambios comerciales, leyes, cosechas y recuento de ganado, aunque después también aparecieron textos religiosos y literarios.",
-        blanks:[
-          {label:"Mesopotamia", answers:["3300 a c","hacia el 3300 a c"]},
-          {label:"Egipto", answers:["3150 a c","sobre el 3150 a c"]},
-          {label:"La escritura marca", answers:["inicio de la historia","el inicio de la historia"]},
-          {label:"Primer uso", answers:["controlar sociedades complejas","para controlar sociedades complejas"]},
-          {label:"Documentos", answers:["impuestos intercambios comerciales leyes cosechas y ganado","impuestos leyes cosechas y ganado"]}
-        ],
-        mcq:[
-          {q:"¿Dónde apareció antes la escritura?", options:["En Egipto","En Mesopotamia","En Grecia"], correct:1},
-          {q:"¿Qué marca la invención de la escritura?", options:["El inicio de la Historia","El fin de la agricultura","El nacimiento de Roma"], correct:0},
-          {q:"¿Para qué se usaron primero los documentos escritos?", options:["Para decorar tumbas","Para controlar sociedades complejas","Solo para poesía"], correct:1}
-        ],
-        tf:[
-          {q:"La escritura egipcia es anterior a la mesopotámica.", correct:false},
-          {q:"Los primeros textos servían también para registrar impuestos y cosechas.", correct:true}
-        ],
-        short:[
-          {q:"Explica por qué la escritura fue útil para gobernar.", model:"Fue útil porque permitía dejar constancia de impuestos, leyes, cosechas, ganado e intercambios."},
-          {q:"Escribe las dos fechas básicas de la escritura.", model:"En Mesopotamia surgió hacia el 3300 a. C. y en Egipto sobre el 3150 a. C."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 4 · Escritura cuneiforme y Código de Hammurabi",
-        subtitle:"Tablillas, punzón, cuñas y ley del talión.",
-        text:"La escritura cuneiforme surgió en Mesopotamia. Su nombre se debe a que se hacía con signos con forma de cuña. Se escribía con un punzón que realizaba incisiones en tablillas de arcilla húmeda, que luego se endurecían al sol. En Mesopotamia también se documenta el primer código de leyes conocido: el Código de Hammurabi, donde aparece la ley del talión, es decir, un castigo relacionado con el crimen cometido.",
-        blanks:[
-          {label:"Civilización", answers:["mesopotamia"]},
-          {label:"Soporte", answers:["tablillas de arcilla","tablilla de arcilla","arcilla"]},
-          {label:"Instrumento", answers:["punzon"]},
-          {label:"Forma", answers:["cuna","cuña","forma de cuña","cuñas"]},
-          {label:"Código", answers:["codigo de hammurabi","hammurabi"]},
-          {label:"Ley", answers:["ley del talion","talion"]}
-        ],
-        mcq:[
-          {q:"¿Dónde nació la escritura cuneiforme?", options:["Egipto","Mesopotamia","Persia"], correct:1},
-          {q:"¿Sobre qué se escribía?", options:["Papiro","Tablillas de arcilla","Madera"], correct:1},
-          {q:"¿Qué expresa la ley del talión?", options:["Un castigo relacionado con el delito","La adoración al Sol","La paz entre ciudades"], correct:0}
-        ],
-        tf:[
-          {q:"La escritura cuneiforme se hacía con tinta sobre papiro.", correct:false},
-          {q:"El Código de Hammurabi pertenece a Mesopotamia.", correct:true}
-        ],
-        short:[
-          {q:"Explica cómo se hacía la escritura cuneiforme.", model:"Se hacía con un punzón sobre tablillas de arcilla húmeda, formando signos con aspecto de cuña."},
-          {q:"¿Qué significa la ley del talión?", model:"Significa que el castigo debía estar relacionado con el crimen cometido."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 5 · Escritura jeroglífica",
-        subtitle:"Pictogramas, ideas, sonidos, soportes y escribas.",
-        text:"En Egipto surgió la escritura jeroglífica. Estaba formada por dibujos o pictogramas que representaban ideas, pero también sonidos. Se realizaba esculpida en piedra, pintada en paredes y escrita en papiros. Era una escritura muy compleja, por lo que existían funcionarios especialistas en ella: los escribas.",
-        blanks:[
-          {label:"Civilización", answers:["egipto"]},
-          {label:"Signos", answers:["dibujos o pictogramas","pictogramas","dibujos"]},
-          {label:"Representan", answers:["ideas y sonidos","ideas pero tambien sonidos"]},
-          {label:"Soportes", answers:["piedra paredes y papiros","piedra paredes y papiro"]},
-          {label:"Especialistas", answers:["escribas"]}
-        ],
-        mcq:[
-          {q:"¿Qué podían representar los jeroglíficos?", options:["Solo números","Ideas y sonidos","Solo dioses"], correct:1},
-          {q:"¿Cuál era un soporte jeroglífico?", options:["Papiro","Hormigón","Vidrio"], correct:0},
-          {q:"¿Quiénes dominaban esta escritura?", options:["Escribas","Campesinos","Soldados"], correct:0}
-        ],
-        tf:[
-          {q:"La escritura jeroglífica solo expresaba sonidos.", correct:false},
-          {q:"Los escribas eran especialistas en escritura.", correct:true}
-        ],
-        short:[
-          {q:"Explica por qué los escribas eran importantes.", model:"Eran importantes porque dominaban una escritura muy compleja y la utilizaban en la administración."},
-          {q:"Di una diferencia básica entre cuneiforme y jeroglífica.", model:"La cuneiforme se hacía en arcilla con punzón y la jeroglífica con pictogramas en piedra, paredes o papiro."}
-        ]
-      },
-      {
-        type:"challenge",
-        title:"Reto acumulativo 1 · Hidráulicas y escritura",
-        subtitle:"Repaso mezclado de hidráulicas, escritura, cuneiforme y jeroglífica.",
-        text:"En este reto debes mezclar las ideas trabajadas hasta ahora: control del agua, funciones de la escritura y diferencias entre cuneiforme y jeroglífica.",
-        mixedTest:[
-          {q:"¿Qué escritura nació en Mesopotamia?", options:["Jeroglífica","Cuneiforme","Griega"], correct:1},
-          {q:"¿Qué estructura llevaba agua a los cultivos?", options:["Zigurat","Canal","Pirámide"], correct:1},
-          {q:"¿Quiénes eran especialistas en escritura en Egipto?", options:["Sacerdotes","Escribas","Guerreros"], correct:1}
-        ],
-        mixedBlanks:[
-          {label:"Río principal de Egipto", answers:["nilo"]},
-          {label:"Escritura de Mesopotamia", answers:["cuneiforme"]},
-          {label:"Instrumento de la cuneiforme", answers:["punzon"]},
-          {label:"Especialistas egipcios", answers:["escribas"]}
-        ],
-        errorItems:[
-          {wrong:"Las civilizaciones hidráulicas se desarrollaron en zonas con mucha lluvia.", correction:"Es incorrecta. Se desarrollaron en zonas con poca lluvia, pero con grandes ríos."},
-          {wrong:"La escritura jeroglífica nació en Mesopotamia.", correction:"Es incorrecta. La escritura jeroglífica nació en Egipto."},
-          {wrong:"Los diques servían para transportar agua a los cultivos.", correction:"Es incorrecta. Los diques contenían el agua; los canales la transportaban."}
-        ],
-        shortGlobal:{
-          q:"Relaciona el aprovechamiento del agua con la aparición de sociedades complejas.",
-          model:"El aprovechamiento del agua mejoró la agricultura, aumentó la producción y eso hizo crecer la población, el comercio y una organización social más compleja."
-        }
-      },
-      {
-        type:"normal",
-        title:"Pantalla 6 · Mesopotamia: base",
-        subtitle:"Tigris, Éufrates, significado y ciudades-Estado.",
-        text:"Mesopotamia surgió en torno a los ríos Tigris y Éufrates; de hecho, su nombre significa 'entre ríos'. Se organizó en ciudades-Estado independientes, con una ciudad principal y campos alrededor. En estas ciudades eran muy importantes la artesanía y el comercio. Estaban gobernadas por reyes con poder político, militar y religioso, y por debajo de ellos estaban sacerdotes, funcionarios y ejército.",
-        blanks:[
-          {label:"Ríos", answers:["tigris y eufrates"]},
-          {label:"Significado", answers:["entre rios"]},
-          {label:"Organización", answers:["ciudades estado","ciudades-estado"]},
-          {label:"Jefe político", answers:["rey","reyes"]},
-          {label:"Otros grupos", answers:["sacerdotes funcionarios y ejercito","sacerdotes funcionarios ejercito"]}
-        ],
-        mcq:[
-          {q:"¿Qué significa Mesopotamia?", options:["Tierra negra","Entre ríos","Tierra sagrada"], correct:1},
-          {q:"¿Cómo se organizó Mesopotamia?", options:["En ciudades-Estado","En provincias romanas","En reinos feudales"], correct:0},
-          {q:"¿Quién gobernaba cada ciudad?", options:["El faraón","El rey","El escriba"], correct:1}
-        ],
-        tf:[
-          {q:"Mesopotamia surgió junto al Nilo.", correct:false},
-          {q:"El ejército era importante para la defensa de la ciudad.", correct:true}
-        ],
-        short:[
-          {q:"Explica qué era una ciudad-Estado en Mesopotamia.", model:"Era una ciudad principal con sus campos alrededor que funcionaba de forma independiente y tenía su propio gobierno."},
-          {q:"¿Por qué crecieron las ciudades mesopotámicas?", model:"Crecieron gracias a la artesanía, el comercio y la agricultura."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 7 · Imperios mesopotámicos",
-        subtitle:"Akkadio, babilónico, asirio y persa.",
-        text:"Las ciudades mesopotámicas estaban en continuo conflicto y algunas lograron imponerse sobre otras, formando grandes imperios. Los cuatro grandes imperios fueron el akkadio, el babilónico, el asirio y el persa. Con Sargón se formó el reino de Akkad; Babilonia tuvo una etapa muy próspera con Hammurabi; Nínive fue la gran ciudad asiria; y el imperio persa, con Ciro, llegó hasta el norte de Egipto y el río Indo.",
-        blanks:[
-          {label:"1.º imperio", answers:["akkadio","acadio"]},
-          {label:"2.º imperio", answers:["babilonico"]},
-          {label:"3.º imperio", answers:["asirio"]},
-          {label:"4.º imperio", answers:["persa"]},
-          {label:"Rey de Babilonia", answers:["hammurabi"]},
-          {label:"Rey persa", answers:["ciro"]}
-        ],
-        mcq:[
-          {q:"¿Cuál fue uno de los grandes imperios mesopotámicos?", options:["Carolingio","Asirio","Bizantino"], correct:1},
-          {q:"¿Con qué rey se asocia Akkad?", options:["Narmer","Sargón","Ra"], correct:1},
-          {q:"¿Qué ciudad fue importante en el imperio asirio?", options:["Tebas","Nínive","Menfis"], correct:1}
-        ],
-        tf:[
-          {q:"Hammurabi se relaciona con Babilonia.", correct:true},
-          {q:"El imperio persa fue el primero de todos.", correct:false}
-        ],
-        short:[
-          {q:"Nombra los cuatro grandes imperios mesopotámicos.", model:"Los cuatro grandes imperios mesopotámicos fueron el akkadio, el babilónico, el asirio y el persa."},
-          {q:"¿Por qué hubo tantos cambios políticos en Mesopotamia?", model:"Porque las ciudades-Estado estaban en conflicto continuo y trataban de dominar a las demás."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 8 · Arte mesopotámico",
-        subtitle:"Función, arquitectura, zigurat, escultura y relieve.",
-        text:"El arte mesopotámico tenía como finalidad ensalzar a los poderosos y rendir gloria a los dioses. En arquitectura se realizaron grandes construcciones con materiales pobres, como ladrillo y barro, y se utilizó el arco y la bóveda. Los edificios principales eran los palacios y el zigurat, un templo construido en terrazas con forma piramidal y santuario en la parte superior. En escultura dominaban las figuras idealizadas y frontales; en el relieve había más detalle, realismo y movimiento.",
-        blanks:[
-          {label:"Función", answers:["ensalzar a los poderosos y rendir gloria a los dioses","glorificar a los dioses y ensalzar a los poderosos"]},
-          {label:"Materiales", answers:["ladrillo y barro","barro y ladrillo","materiales pobres"]},
-          {label:"Elementos", answers:["arco y boveda","boveda y arco"]},
-          {label:"Edificio religioso", answers:["zigurat"]},
-          {label:"Escultura", answers:["idealizada y frontal","frontal e idealizada"]},
-          {label:"Relieve", answers:["mas realista y con movimiento","mas detallista y realista"]}
-        ],
-        mcq:[
-          {q:"¿Cuál era el edificio religioso más característico de Mesopotamia?", options:["Pirámide","Zigurat","Hipogeo"], correct:1},
-          {q:"¿Qué usaban en arquitectura?", options:["Arco y bóveda","Hormigón y cúpula","Solo columnas"], correct:0},
-          {q:"¿Cómo era la escultura mesopotámica?", options:["Idealizada y frontal","Muy naturalista","Perspectiva perfecta"], correct:0}
-        ],
-        tf:[
-          {q:"El relieve mesopotámico mostraba más movimiento que la escultura.", correct:true},
-          {q:"El zigurat era una tumba egipcia.", correct:false}
-        ],
-        short:[
-          {q:"Explica qué era un zigurat.", model:"Era un templo mesopotámico construido en terrazas con forma piramidal y un santuario arriba."},
-          {q:"Diferencia escultura y relieve en Mesopotamia.", model:"La escultura era más idealizada y frontal, mientras que el relieve tenía más detalle, realismo y movimiento."}
-        ]
-      },
-      {
-        type:"challenge",
-        title:"Reto acumulativo 2 · Mesopotamia en conjunto",
-        subtitle:"Mesopotamia, imperios, zigurat, escritura y diferencias con Egipto.",
-        text:"Este reto mezcla territorio, política, imperios, arte y escritura de Mesopotamia, y te obliga a compararla con Egipto.",
-        mixedTest:[
-          {q:"¿Qué significa Mesopotamia?", options:["Tierra negra","Entre ríos","Casa del dios"], correct:1},
-          {q:"¿Qué imperio se asocia a Hammurabi?", options:["Asirio","Babilónico","Persa"], correct:1},
-          {q:"¿Qué edificio era un templo mesopotámico?", options:["Mastaba","Zigurat","Hipogeo"], correct:1}
-        ],
-        mixedBlanks:[
-          {label:"Ríos de Mesopotamia", answers:["tigris y eufrates"]},
-          {label:"Escritura mesopotámica", answers:["cuneiforme"]},
-          {label:"Organización política", answers:["ciudades estado","ciudades-estado"]},
-          {label:"Edificio religioso", answers:["zigurat"]}
-        ],
-        errorItems:[
-          {wrong:"Mesopotamia estaba organizada en un único Estado gobernado por el faraón.", correction:"Es incorrecta. Mesopotamia se organizó en ciudades-Estado y estaba gobernada por reyes, no por un faraón."},
-          {wrong:"El zigurat era una tumba egipcia.", correction:"Es incorrecta. El zigurat era un templo mesopotámico."},
-          {wrong:"La escultura mesopotámica se caracteriza por el uso de colores planos.", correction:"Es incorrecta. Los colores planos caracterizan más la pintura egipcia; la escultura mesopotámica era frontal e idealizada."}
-        ],
-        shortGlobal:{
-          q:"Explica una diferencia básica entre Mesopotamia y Egipto.",
-          model:"Mesopotamia se organizó en ciudades-Estado junto al Tigris y el Éufrates, mientras que Egipto fue un Estado unificado en torno al Nilo."
-        }
-      },
-      {
-        type:"normal",
-        title:"Pantalla 9 · Egipto: base",
-        subtitle:"Nilo, Narmer, unificación y faraón.",
-        text:"Egipto surgió en torno al río Nilo. Su origen se sitúa cuando, hacia el 3000 a. C., el rey Narmer unificó el Alto Egipto y el Bajo Egipto, creando un Estado fuerte y unificado. A lo largo de su historia pasó por distintas etapas: Imperio Antiguo, Medio, Nuevo y época tardía. En Egipto el faraón tenía poder absoluto, político, militar y religioso, y era considerado un dios.",
-        blanks:[
-          {label:"Río", answers:["nilo"]},
-          {label:"Rey unificador", answers:["narmer"]},
-          {label:"Unificación", answers:["alto egipto y bajo egipto","bajo egipto y alto egipto"]},
-          {label:"Resultado", answers:["estado fuerte y unificado","un estado fuerte y unificado"]},
-          {label:"Gobernante", answers:["faraon"]},
-          {label:"Etapas", answers:["imperio antiguo medio nuevo y epoca tardia","antiguo medio nuevo y tardia"]}
-        ],
-        mcq:[
-          {q:"¿En torno a qué río surgió Egipto?", options:["Nilo","Tigris","Éufrates"], correct:0},
-          {q:"¿Quién unificó el Alto y el Bajo Egipto?", options:["Narmer","Sargón","Ciro"], correct:0},
-          {q:"¿Cómo era el poder del faraón?", options:["Limitado","Absoluto","Solo militar"], correct:1}
-        ],
-        tf:[
-          {q:"Narmer unificó Egipto.", correct:true},
-          {q:"El faraón no tenía relación con la religión.", correct:false}
-        ],
-        short:[
-          {q:"Explica por qué el faraón tenía tanto poder.", model:"Porque concentraba el poder político, militar y religioso y además era considerado un dios."},
-          {q:"¿Qué importancia tuvo Narmer?", model:"Narmer fue importante porque unificó el Alto y el Bajo Egipto y creó un Estado fuerte y unificado."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 10 · Sociedad egipcia",
-        subtitle:"Privilegiados, no privilegiados, esclavos y mujeres.",
-        text:"La sociedad egipcia estaba muy jerarquizada. Entre los privilegiados estaban el faraón y su familia, los altos funcionarios y los sacerdotes, que tenían la mayor parte de las tierras y el poder. Entre los no privilegiados se encontraba la mayoría de la población: campesinos, artesanos y comerciantes, que eran libres pero pagaban impuestos. También había esclavos. Las mujeres egipcias tenían derechos que otras no tenían: podían poseer bienes, heredar, regentar negocios, escoger marido o divorciarse. Destacan Hatshepsut y Nefertiti.",
-        blanks:[
-          {label:"Privilegiados", answers:["faraon altos funcionarios y sacerdotes","faraon y su familia altos funcionarios y sacerdotes"]},
-          {label:"No privilegiados", answers:["campesinos artesanos y comerciantes"]},
-          {label:"Esclavos", answers:["no eran libres","sin libertad","no libres"]},
-          {label:"Mujeres", answers:["tenian derechos","podian tener bienes","podian heredar"]},
-          {label:"Ejemplos", answers:["hatshepsut y nefertiti","nefertiti y hatshepsut"]}
-        ],
-        mcq:[
-          {q:"¿Qué grupo formaba la mayor parte de la población libre?", options:["Sacerdotes","Campesinos, artesanos y comerciantes","Escribas y nobles"], correct:1},
-          {q:"¿Qué afirmación sobre las mujeres egipcias es correcta?", options:["No podían heredar","Podían tener bienes","No podían divorciarse"], correct:1},
-          {q:"¿Qué dos mujeres destacadas aparecen en el tema?", options:["Safo y Cleopatra","Hatshepsut y Nefertiti","Penélope y Helena"], correct:1}
-        ],
-        tf:[
-          {q:"La sociedad egipcia era poco jerarquizada.", correct:false},
-          {q:"Las mujeres egipcias podían tener algunos derechos poco habituales en otras civilizaciones antiguas.", correct:true}
-        ],
-        short:[
-          {q:"Explica cómo estaba dividida la sociedad egipcia.", model:"Se dividía en privilegiados, no privilegiados y esclavos, con grandes diferencias entre los grupos."},
-          {q:"Señala dos derechos de las mujeres egipcias.", model:"Podían tener bienes, heredar, escoger marido, divorciarse o regentar un negocio."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 11 · Religión egipcia",
-        subtitle:"Politeísmo, dioses y Ka.",
-        text:"La religión egipcia era politeísta, es decir, creía en varios dioses. El dios más venerado era Ra, dios Sol, al que se asoció Amón-Ra. Otros dioses importantes eran Osiris, dios de los muertos; Isis, diosa de la fertilidad; Horus, dios del cielo; Anubis, dios de la momificación; y Tot, secretario de los dioses y patrón de los escribas. Para los egipcios, el ser humano estaba formado por cuerpo y alma, llamada Ka.",
-        blanks:[
-          {label:"Tipo de religión", answers:["politeista"]},
-          {label:"Dios solar", answers:["ra","amon-ra","amon ra"]},
-          {label:"Dios de los muertos", answers:["osiris"]},
-          {label:"Diosa de la fertilidad", answers:["isis"]},
-          {label:"Dios de la momificación", answers:["anubis"]},
-          {label:"Secretario de los dioses", answers:["tot"]},
-          {label:"Alma", answers:["ka"]}
-        ],
-        mcq:[
-          {q:"¿Cómo era la religión egipcia?", options:["Monoteísta","Politeísta","Atea"], correct:1},
-          {q:"¿Quién era el dios de los muertos?", options:["Osiris","Ra","Tot"], correct:0},
-          {q:"¿Qué nombre recibía el alma?", options:["Ka","Maat","Baal"], correct:0}
-        ],
-        tf:[
-          {q:"Anubis se relacionaba con la momificación.", correct:true},
-          {q:"La religión egipcia creía en un solo dios.", correct:false}
-        ],
-        short:[
-          {q:"Nombra tres dioses egipcios y su función.", model:"Por ejemplo: Ra era el dios Sol, Osiris el dios de los muertos y Anubis el dios de la momificación."},
-          {q:"¿Qué era el Ka?", model:"El Ka era el alma del ser humano según las creencias egipcias."}
-        ]
-      },
-      {
-        type:"challenge",
-        title:"Reto acumulativo 3 · Egipto base, sociedad y religión",
-        subtitle:"Repaso de Nilo, Narmer, faraón, jerarquía social y dioses.",
-        text:"En este reto tienes que unir política, sociedad y religión en Egipto.",
-        mixedTest:[
-          {q:"¿Quién unificó Egipto?", options:["Narmer","Hammurabi","Ciro"], correct:0},
-          {q:"¿Cómo era la religión egipcia?", options:["Monoteísta","Politeísta","Cristiana"], correct:1},
-          {q:"¿Quién tenía poder absoluto en Egipto?", options:["El rey de Babilonia","El faraón","El ejército"], correct:1}
-        ],
-        mixedBlanks:[
-          {label:"Río de Egipto", answers:["nilo"]},
-          {label:"Rey unificador", answers:["narmer"]},
-          {label:"Jefe del Estado", answers:["faraon"]},
-          {label:"Dios del cielo", answers:["horus"]}
-        ],
-        errorItems:[
-          {wrong:"Narmer fue un rey de Babilonia.", correction:"Es incorrecta. Narmer fue el rey que unificó el Alto y el Bajo Egipto."},
-          {wrong:"La religión egipcia era monoteísta.", correction:"Es incorrecta. La religión egipcia era politeísta."},
-          {wrong:"Las mujeres egipcias no podían tener bienes.", correction:"Es incorrecta. Las mujeres egipcias sí podían tener bienes y otros derechos."}
-        ],
-        shortGlobal:{
-          q:"Relaciona el poder del faraón con la sociedad y la religión egipcias.",
-          model:"El faraón tenía poder absoluto porque gobernaba el Estado y además era considerado un dios, dentro de una sociedad muy jerarquizada y religiosa."
-        }
-      },
-      {
-        type:"normal",
-        title:"Pantalla 12 · Momificación",
-        subtitle:"Órganos, natrón, serrín, vendas, vasos canopes y ajuar.",
-        text:"Las creencias funerarias tenían un papel muy importante en Egipto. Para que el difunto accediera al reino de Osiris, el cuerpo debía estar incorrupto, por lo que se practicaba la momificación. Consistía en extraer algunos órganos, cubrir y rellenar el cuerpo con natrón durante 40 días, limpiarlo, introducir serrín y cubrirlo con vendas. Algunas vísceras se colocaban en vasos canopes. Después el rostro se cubría con una máscara y la momia se depositaba en un sarcófago junto al Libro de los Muertos y el ajuar funerario.",
-        blanks:[
-          {label:"Se extraen", answers:["organos","algunos organos"]},
-          {label:"Se usa", answers:["natron"]},
-          {label:"Se introduce", answers:["serrin"]},
-          {label:"Se cubre con", answers:["vendas"]},
-          {label:"Vísceras", answers:["vasos canopes","canopes"]},
-          {label:"Se deposita en", answers:["sarcofago"]},
-          {label:"Se acompaña con", answers:["libro de los muertos y ajuar funerario","ajuar funerario y libro de los muertos"]}
-        ],
-        mcq:[
-          {q:"¿Para qué se momificaba el cuerpo?", options:["Para conservarlo","Para venderlo","Para decorarlo"], correct:0},
-          {q:"¿Qué producto se usaba durante 40 días?", options:["Natrón","Papiro","Barro"], correct:0},
-          {q:"¿Dónde se guardaban algunas vísceras?", options:["En vasos canopes","En templos","En palacios"], correct:0}
-        ],
-        tf:[
-          {q:"La momificación estaba relacionada con las creencias funerarias egipcias.", correct:true},
-          {q:"Los vasos canopes servían para guardar joyas.", correct:false}
-        ],
-        short:[
-          {q:"Resume el proceso de momificación.", model:"Se extraían algunos órganos, se trataba el cuerpo con natrón, se rellenaba con serrín, se envolvía con vendas y se colocaba en un sarcófago."},
-          {q:"¿Por qué era importante conservar el cuerpo?", model:"Porque los egipcios creían que el cuerpo debía permanecer incorrupto para acceder al reino de Osiris."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 13 · Juicio de Osiris",
-        subtitle:"Balanza, corazón, pluma, Anubis, Tot y Horus.",
-        text:"Tras la muerte, Osiris sometía al difunto al juicio de Osiris. Para ello, Anubis ponía el corazón del difunto en un lado de una balanza y en el otro una pluma. Si el corazón pesaba más que la pluma, un monstruo lo devoraba. Tot era el encargado de apuntar el resultado. Si el difunto superaba la prueba, Horus lo acompañaba hasta el reino de Osiris.",
-        blanks:[
-          {label:"Objeto 1", answers:["corazon"]},
-          {label:"Objeto 2", answers:["pluma"]},
-          {label:"Dios que pesa", answers:["anubis"]},
-          {label:"Dios que anota", answers:["tot"]},
-          {label:"Dios que acompaña", answers:["horus"]},
-          {label:"Destino final", answers:["reino de osiris","osiris"]}
-        ],
-        mcq:[
-          {q:"¿Quién colocaba el corazón en la balanza?", options:["Anubis","Ra","Narmer"], correct:0},
-          {q:"¿Qué había en el otro lado de la balanza?", options:["Una pluma","Una máscara","Una estatua"], correct:0},
-          {q:"¿Quién anotaba el resultado?", options:["Tot","Isis","Ra"], correct:0}
-        ],
-        tf:[
-          {q:"Si el difunto superaba la prueba, Horus lo acompañaba al reino de Osiris.", correct:true},
-          {q:"Anubis era quien anotaba el resultado del juicio.", correct:false}
-        ],
-        short:[
-          {q:"Explica de forma breve el juicio de Osiris.", model:"En el juicio de Osiris, Anubis pesaba el corazón del difunto frente a una pluma, Tot anotaba el resultado y Horus lo acompañaba si superaba la prueba."},
-          {q:"¿Qué ocurría si el corazón pesaba más que la pluma?", model:"Si pesaba más, un monstruo devoraba al difunto."}
-        ]
-      },
-      {
-        type:"normal",
-        title:"Pantalla 14 · Arte egipcio",
-        subtitle:"Arquitectura, templos, tumbas, escultura y pintura.",
-        text:"El arte egipcio servía para ensalzar a los faraones y glorificar a los dioses. La arquitectura era arquitrabada o adintelada, con cubiertas planas, sin arco ni bóveda, y destacaba por el colosalismo y el uso de piedra. El templo era la casa de los dioses y se dividía en varias partes: avenida de esfinges, entrada con pilonos, patio, sala hipóstila y santuario. Los edificios funerarios, por orden de aparición, fueron la mastaba, la pirámide y el hipogeo. La escultura era frontal, idealizada y muchas veces colosal. La pintura decoraba templos y tumbas con figuras rígidas, idealizadas y colores planos.",
-        blanks:[
-          {label:"Función", answers:["ensalzar a sus faraones y glorificar a sus dioses","glorificar a sus dioses y ensalzar a sus faraones"]},
-          {label:"Arquitectura", answers:["arquitrabada o adintelada","adintelada","arquitrabada"]},
-          {label:"Material", answers:["piedra"]},
-          {label:"Edificio religioso", answers:["templo"]},
-          {label:"Tumbas", answers:["mastaba piramide e hipogeo","mastaba piramide hipogeo"]},
-          {label:"Escultura", answers:["frontal e idealizada","idealizada y frontal"]},
-          {label:"Pintura", answers:["colores planos","figuras rigidas e idealizadas y colores planos","rigidez y colores planos"]}
-        ],
-        mcq:[
-          {q:"¿Cómo era la arquitectura egipcia?", options:["Adintelada","Con bóvedas","Gótica"], correct:0},
-          {q:"¿Cuál era la casa de los dioses?", options:["El templo","La mastaba","El palacio"], correct:0},
-          {q:"¿Qué tumbas aparecieron por orden?", options:["Pirámide, mastaba, hipogeo","Mastaba, pirámide, hipogeo","Hipogeo, pirámide, mastaba"], correct:1}
-        ],
-        tf:[
-          {q:"La arquitectura egipcia utilizaba principalmente arco y bóveda.", correct:false},
-          {q:"La pintura egipcia empleaba colores planos.", correct:true}
-        ],
-        short:[
-          {q:"Nombra las tres grandes tumbas egipcias por orden.", model:"Las tres grandes tumbas egipcias por orden son la mastaba, la pirámide y el hipogeo."},
-          {q:"Explica una diferencia entre arte mesopotámico y arte egipcio.", model:"El arte egipcio usó arquitectura adintelada y piedra, mientras que en Mesopotamia destacaron el arco, la bóveda y materiales más pobres."}
-        ]
-      },
-      {
-        type:"challenge",
-        title:"Reto acumulativo 4 · Religión, momificación y arte egipcio",
-        subtitle:"Religión funeraria, juicio, tumbas y arte egipcio.",
-        text:"En este reto ya debes conectar religión, momificación, juicio de Osiris y arte egipcio.",
-        mixedTest:[
-          {q:"¿Qué dios se relaciona con la momificación?", options:["Anubis","Narmer","Ciro"], correct:0},
-          {q:"¿Qué tumba egipcia apareció después de la mastaba?", options:["Pirámide","Zigurat","Templo"], correct:0},
-          {q:"¿Cómo era la arquitectura egipcia?", options:["Adintelada","Con bóvedas","Con arcos"], correct:0}
-        ],
-        mixedBlanks:[
-          {label:"Dios del juicio de los muertos", answers:["osiris"]},
-          {label:"Dios que pesa el corazón", answers:["anubis"]},
-          {label:"Dios que escribe el resultado", answers:["tot"]},
-          {label:"Tumba bajo tierra", answers:["hipogeo"]}
-        ],
-        errorItems:[
-          {wrong:"Los vasos canopes servían para guardar joyas.", correction:"Es incorrecta. Los vasos canopes servían para guardar algunas vísceras del difunto."},
-          {wrong:"Anubis anotaba el resultado del juicio de Osiris.", correction:"Es incorrecta. Tot era quien anotaba el resultado."},
-          {wrong:"El hipogeo era un templo dedicado al dios Ra.", correction:"Es incorrecta. El hipogeo era una tumba subterránea."},
-          {wrong:"La arquitectura egipcia utilizaba arco y bóveda como elementos principales.", correction:"Es incorrecta. La arquitectura egipcia era adintelada."}
-        ],
-        shortGlobal:{
-          q:"Relaciona religión funeraria y arte egipcio.",
-          model:"La religión funeraria influyó mucho en el arte egipcio porque se construyeron tumbas, se practicó la momificación y se decoraron templos y espacios funerarios para glorificar a dioses y faraones."
-        }
-      },
-      {
-        type:"normal",
-        title:"Pantalla 15 · Comparación final: Mesopotamia vs Egipto",
-        subtitle:"Ríos, escritura, política, religión y arte.",
-        text:"Mesopotamia y Egipto fueron civilizaciones hidráulicas, pero presentaron diferencias claras. Mesopotamia se desarrolló junto al Tigris y el Éufrates y se organizó en ciudades-Estado; Egipto creció en torno al Nilo y formó un Estado unificado bajo el faraón. En Mesopotamia surgió la escritura cuneiforme y en Egipto la jeroglífica. Ambas religiones eran politeístas. En arquitectura, Mesopotamia destacó por el arco, la bóveda y el zigurat; Egipto por la arquitectura adintelada, los templos y las tumbas funerarias.",
-        blanks:[
-          {label:"Ríos mesopotámicos", answers:["tigris y eufrates"]},
-          {label:"Río egipcio", answers:["nilo"]},
-          {label:"Escritura mesopotámica", answers:["cuneiforme"]},
-          {label:"Escritura egipcia", answers:["jeroglifica"]},
-          {label:"Política mesopotámica", answers:["ciudades estado","ciudades-estado"]},
-          {label:"Política egipcia", answers:["estado unificado con faraon","faraon con poder absoluto"]},
-          {label:"Edificio mesopotámico", answers:["zigurat"]},
-          {label:"Tumbas egipcias", answers:["mastaba piramide e hipogeo","mastaba piramide hipogeo"]}
-        ],
-        mcq:[
-          {q:"¿Qué edificio religioso caracteriza a Mesopotamia?", options:["Zigurat","Mastaba","Hipogeo"], correct:0},
-          {q:"¿Qué escritura corresponde a Egipto?", options:["Cuneiforme","Jeroglífica","Fenicia"], correct:1},
-          {q:"¿Cuál es una diferencia política básica?", options:["Mesopotamia tuvo ciudades-Estado y Egipto un faraón en un Estado unificado","Egipto tuvo ciudades-Estado y Mesopotamia un faraón","Fueron iguales"], correct:0}
-        ],
-        tf:[
-          {q:"Tanto Mesopotamia como Egipto fueron politeístas.", correct:true},
-          {q:"En Egipto el edificio religioso principal era el zigurat.", correct:false}
-        ],
-        short:[
-          {q:"Escribe dos diferencias entre Mesopotamia y Egipto.", model:"Mesopotamia se organizó en ciudades-Estado junto al Tigris y el Éufrates y usó escritura cuneiforme; Egipto se organizó en un Estado unificado en torno al Nilo y usó escritura jeroglífica."},
-          {q:"Escribe una semejanza entre ambas civilizaciones.", model:"Ambas fueron civilizaciones hidráulicas y politeístas, y desarrollaron escritura y arte."}
-        ]
-      },
-      {
-        type:"final",
-        title:"Pantalla 16 · Examen aleatorio general",
-        subtitle:"Repaso final de todos los apuntes de la profesora."
-      }
-    ];
+  <main class="screen" id="screenContainer"></main>
 
-    const state = {
-      current:0,
-      done:new Set()
-    };
+  <div class="footer">Web en un solo archivo · GitHub Pages lista</div>
+</div>
 
-    const screenContainer = document.getElementById("screenContainer");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const jumpSelect = document.getElementById("jumpSelect");
-    const screenPill = document.getElementById("screenPill");
-    const progressPill = document.getElementById("progressPill");
-    const progressBar = document.getElementById("progressBar");
+<script>
+const screens = [
+  {
+    type:"normal",
+    title:"Pantalla 1 · Inicio del tema",
+    subtitle:"Mapa general del tema antes de entrar en cada bloque.",
+    text:"La Edad Antigua comenzó hacia el 3000 a. C. en el Oriente Próximo, dentro del Creciente Fértil. Allí surgieron Mesopotamia y Egipto, conocidas como civilizaciones hidráulicas porque aprovecharon grandes ríos en territorios con poca lluvia. Gracias al control del agua, la agricultura fue próspera y crecieron la población, el comercio y la artesanía. En ese contexto apareció la escritura, que marca el inicio de la Historia.",
+    blanks:[
+      {label:"Fecha", answers:["3000 a c","3000 ac","hacia el 3000 a c"], options:["3000 a. C.","1492","476 d. C.","753 a. C."]},
+      {label:"Lugar", answers:["oriente proximo","creciente fertil"], options:["Oriente Próximo","Grecia","Roma","Península ibérica"]},
+      {label:"Civilizaciones", answers:["mesopotamia y egipto","egipto y mesopotamia"], options:["Mesopotamia y Egipto","Roma y Grecia","Fenicia y Persia","China e India"]},
+      {label:"Ríos", answers:["tigris eufrates y nilo","nilo tigris y eufrates"], options:["Tigris, Éufrates y Nilo","Tajo y Duero","Ebro y Guadalquivir","Danubio y Rin"]},
+      {label:"Escrituras", answers:["cuneiforme y jeroglifica","jeroglifica y cuneiforme"], options:["Cuneiforme y jeroglífica","Latina y griega","Fenicia y árabe","Hebrea y latina"]},
+      {label:"Religión", answers:["politeista"], options:["Politeísta","Monoteísta","Atea","Cristiana"]}
+    ],
+    mcq:[
+      {q:"¿Qué hecho marca el inicio de la Historia?", options:["La invención del arado","La invención de la escritura","La construcción de pirámides"], correct:1},
+      {q:"¿Dónde comenzó la Edad Antigua?", options:["En Roma","En Oriente Próximo","En la península ibérica"], correct:1},
+      {q:"¿Qué dos civilizaciones se estudian aquí?", options:["Roma y Grecia","Mesopotamia y Egipto","Fenicia y Persia"], correct:1}
+    ],
+    tf:[
+      {q:"Mesopotamia y Egipto fueron civilizaciones hidráulicas.", correct:true},
+      {q:"La Edad Antigua comenzó en el siglo I d. C.", correct:false}
+    ],
+    short:[
+      {q:"Explica por qué Mesopotamia y Egipto se llaman civilizaciones hidráulicas.", model:"Se llaman así porque aprovecharon el agua de grandes ríos para desarrollar una agricultura próspera."},
+      {q:"Di por qué la escritura fue tan importante.", model:"La escritura fue importante porque permitió controlar sociedades complejas y marcó el inicio de la Historia."}
+    ]
+  },
 
-    function normalize(str){
-      return (str || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g,"")
-        .replace(/[.,;:¡!¿?()"]/g,"")
-        .replace(/\s+/g," ")
-        .trim();
+  {
+    type:"normal",
+    title:"Pantalla 2 · Civilizaciones hidráulicas",
+    subtitle:"Diques, canales, arado, rueda y consecuencias sociales.",
+    text:"Mesopotamia y Egipto se situaban en territorios donde llovía poco, pero por ellos pasaban grandes ríos. Gracias a la construcción de diques, que contenían el agua, y canales, que la llevaban a zonas de cultivo, su agricultura fue muy productiva. También ayudaron inventos como el arado y la rueda, además de avances en cálculo y geometría. El aumento de la producción agrícola hizo crecer la población, el comercio, la artesanía y una sociedad más diversa y jerarquizada.",
+    blanks:[
+      {label:"Diques", answers:["contener el agua","contencion de agua"], options:["Contener el agua","Escribir leyes","Construir tumbas","Adorar a los dioses"]},
+      {label:"Canales", answers:["transportar agua a zonas de cultivo","llevar agua a zonas de cultivo"], options:["Llevar agua a los cultivos","Guardar grano","Medir el tiempo","Hacer murallas"]},
+      {label:"Inventos", answers:["arado y rueda","rueda y arado"], options:["Arado y rueda","Papel y imprenta","Pólvora y brújula","Locomotora y telégrafo"]},
+      {label:"Resultado agrícola", answers:["aumento de la productividad","mayor productividad","mas productividad"], options:["Mayor productividad","Menos cosechas","Despoblación","Empobrecimiento"]},
+      {label:"Cambio social", answers:["sociedad mas jerarquizada","mas diversa y jerarquizada","jerarquizada"], options:["Más diversa y jerarquizada","Sin clases sociales","Más simple","Igualitaria"]}
+    ],
+    mcq:[
+      {q:"¿Para qué servían los diques?", options:["Para contener el agua","Para escribir leyes","Para hacer tumbas"], correct:0},
+      {q:"¿Qué llevaban los canales?", options:["Piedra","Agua a los cultivos","Soldados"], correct:1},
+      {q:"¿Qué produjo el aumento agrícola?", options:["Menos población","Más comercio y artesanía","El fin de la jerarquía social"], correct:1}
+    ],
+    tf:[
+      {q:"En estas civilizaciones llovía mucho y por eso no necesitaban ríos.", correct:false},
+      {q:"El arado y la rueda ayudaron a mejorar la productividad.", correct:true}
+    ],
+    short:[
+      {q:"Relaciona control del agua y crecimiento de la población.", model:"El control del agua mejoró la agricultura, hubo más alimentos y por eso creció la población."},
+      {q:"Explica por qué la sociedad se hizo más jerarquizada.", model:"La sociedad se hizo más jerarquizada porque aparecieron más oficios y aumentó el poder de reyes, sacerdotes y funcionarios."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 3 · Invención de la escritura",
+    subtitle:"Fechas, lugares y función básica de los primeros textos.",
+    text:"La escritura surgió hacia el 3300 a. C. en Mesopotamia y sobre el 3150 a. C. en Egipto. Esto supuso el inicio de la Historia y de la Edad Antigua. A partir de entonces podemos estudiar mejor estas sociedades porque dejaron documentos escritos. Los primeros textos se hicieron para controlar sociedades complejas: impuestos, intercambios comerciales, leyes, cosechas y recuento de ganado.",
+    blanks:[
+      {label:"Mesopotamia", answers:["3300 a c","hacia el 3300 a c"], options:["3300 a. C.","3150 a. C.","476 d. C.","27 a. C."]},
+      {label:"Egipto", answers:["3150 a c","sobre el 3150 a c"], options:["3150 a. C.","3300 a. C.","1492","711"]},
+      {label:"La escritura marca", answers:["inicio de la historia","el inicio de la historia"], options:["Inicio de la Historia","Inicio de la Prehistoria","Fin de Roma","Edad Media"]},
+      {label:"Primer uso", answers:["controlar sociedades complejas","para controlar sociedades complejas"], options:["Controlar sociedades complejas","Solo decorar templos","Solo escribir cuentos","Solo hacer poemas"]}
+    ],
+    mcq:[
+      {q:"¿Dónde apareció antes la escritura?", options:["En Egipto","En Mesopotamia","En Grecia"], correct:1},
+      {q:"¿Qué marca la invención de la escritura?", options:["El inicio de la Historia","El fin de la agricultura","El nacimiento de Roma"], correct:0},
+      {q:"¿Para qué se usaron primero los documentos escritos?", options:["Para decorar tumbas","Para controlar sociedades complejas","Solo para poesía"], correct:1}
+    ],
+    tf:[
+      {q:"La escritura egipcia es anterior a la mesopotámica.", correct:false},
+      {q:"Los primeros textos servían para registrar impuestos y cosechas.", correct:true}
+    ],
+    short:[
+      {q:"Explica por qué la escritura fue útil para gobernar.", model:"Fue útil porque permitía dejar constancia de impuestos, leyes, cosechas, ganado e intercambios."},
+      {q:"Escribe las dos fechas básicas de la escritura.", model:"En Mesopotamia surgió hacia el 3300 a. C. y en Egipto sobre el 3150 a. C."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 4 · Escritura cuneiforme y Código de Hammurabi",
+    subtitle:"Tablillas, punzón, cuñas y ley del talión.",
+    text:"La escritura cuneiforme surgió en Mesopotamia. Su nombre se debe a que se hacía con signos con forma de cuña. Se escribía con un punzón que realizaba incisiones en tablillas de arcilla húmeda, que luego se endurecían al sol. En Mesopotamia también se documenta el primer código de leyes conocido: el Código de Hammurabi.",
+    blanks:[
+      {label:"Civilización", answers:["mesopotamia"], options:["Mesopotamia","Egipto","Grecia","Roma"]},
+      {label:"Soporte", answers:["tablillas de arcilla","tablilla de arcilla","arcilla"], options:["Tablillas de arcilla","Papiro","Madera","Pergamino"]},
+      {label:"Instrumento", answers:["punzon"], options:["Punzón","Pincel","Pluma metálica","Buril romano"]},
+      {label:"Forma", answers:["cuna","cuña","forma de cuña","cuñas"], options:["Cuña","Círculo","Triángulo","Ola"]},
+      {label:"Código", answers:["codigo de hammurabi","hammurabi"], options:["Código de Hammurabi","Código de Justiniano","Doce Tablas","Código Napoleónico"]},
+      {label:"Ley", answers:["ley del talion","talion"], options:["Ley del talión","Ley sálica","Ley romana","Ley divina"]}
+    ],
+    mcq:[
+      {q:"¿Dónde nació la escritura cuneiforme?", options:["Egipto","Mesopotamia","Persia"], correct:1},
+      {q:"¿Sobre qué se escribía?", options:["Papiro","Tablillas de arcilla","Madera"], correct:1},
+      {q:"¿Qué expresa la ley del talión?", options:["Un castigo relacionado con el delito","La adoración al Sol","La paz entre ciudades"], correct:0}
+    ],
+    tf:[
+      {q:"La escritura cuneiforme se hacía con tinta sobre papiro.", correct:false},
+      {q:"El Código de Hammurabi pertenece a Mesopotamia.", correct:true}
+    ],
+    short:[
+      {q:"Explica cómo se hacía la escritura cuneiforme.", model:"Se hacía con un punzón sobre tablillas de arcilla húmeda, formando signos con aspecto de cuña."},
+      {q:"¿Qué significa la ley del talión?", model:"Significa que el castigo debía estar relacionado con el crimen cometido."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 5 · Escritura jeroglífica",
+    subtitle:"Pictogramas, ideas, sonidos, soportes y escribas.",
+    text:"En Egipto surgió la escritura jeroglífica. Estaba formada por dibujos o pictogramas que representaban ideas, pero también sonidos. Se realizaba esculpida en piedra, pintada en paredes y escrita en papiros. Era una escritura muy compleja, por lo que existían funcionarios especialistas en ella: los escribas.",
+    blanks:[
+      {label:"Civilización", answers:["egipto"], options:["Egipto","Mesopotamia","Roma","Persia"]},
+      {label:"Signos", answers:["dibujos o pictogramas","pictogramas","dibujos"], options:["Dibujos o pictogramas","Letras latinas","Solo números","Símbolos árabes"]},
+      {label:"Representan", answers:["ideas y sonidos","ideas pero tambien sonidos"], options:["Ideas y sonidos","Solo sonidos","Solo dioses","Solo animales"]},
+      {label:"Soportes", answers:["piedra paredes y papiros","piedra paredes y papiro"], options:["Piedra, paredes y papiros","Arcilla y barro","Solo madera","Solo metal"]},
+      {label:"Especialistas", answers:["escribas"], options:["Escribas","Soldados","Campesinos","Mercaderes"]}
+    ],
+    mcq:[
+      {q:"¿Qué podían representar los jeroglíficos?", options:["Solo números","Ideas y sonidos","Solo dioses"], correct:1},
+      {q:"¿Cuál era un soporte jeroglífico?", options:["Papiro","Hormigón","Vidrio"], correct:0},
+      {q:"¿Quiénes dominaban esta escritura?", options:["Escribas","Campesinos","Soldados"], correct:0}
+    ],
+    tf:[
+      {q:"La escritura jeroglífica solo expresaba sonidos.", correct:false},
+      {q:"Los escribas eran especialistas en escritura.", correct:true}
+    ],
+    short:[
+      {q:"Explica por qué los escribas eran importantes.", model:"Eran importantes porque dominaban una escritura muy compleja y la utilizaban en la administración."},
+      {q:"Di una diferencia básica entre cuneiforme y jeroglífica.", model:"La cuneiforme se hacía en arcilla con punzón y la jeroglífica con pictogramas en piedra, paredes o papiro."}
+    ]
+  },
+
+  {
+    type:"challenge",
+    title:"Reto acumulativo 1 · Hidráulicas y escritura",
+    subtitle:"Repaso mezclado de hidráulicas, escritura, cuneiforme y jeroglífica.",
+    text:"En este reto debes mezclar las ideas trabajadas hasta ahora: control del agua, funciones de la escritura y diferencias entre cuneiforme y jeroglífica.",
+    mixedTest:[
+      {q:"¿Qué escritura nació en Mesopotamia?", options:["Jeroglífica","Cuneiforme","Griega"], correct:1},
+      {q:"¿Qué estructura llevaba agua a los cultivos?", options:["Zigurat","Canal","Pirámide"], correct:1},
+      {q:"¿Quiénes eran especialistas en escritura en Egipto?", options:["Sacerdotes","Escribas","Guerreros"], correct:1}
+    ],
+    mixedBlanks:[
+      {label:"Río principal de Egipto", answers:["nilo"], options:["Nilo","Tigris","Éufrates","Indo"]},
+      {label:"Escritura de Mesopotamia", answers:["cuneiforme"], options:["Cuneiforme","Jeroglífica","Latina","Fenicia"]},
+      {label:"Instrumento de la cuneiforme", answers:["punzon"], options:["Punzón","Pincel","Cincel","Pluma"]},
+      {label:"Especialistas egipcios", answers:["escribas"], options:["Escribas","Guerreros","Artesanos","Campesinos"]}
+    ],
+    errorItems:[
+      {wrong:"Las civilizaciones hidráulicas se desarrollaron en zonas con mucha lluvia.", correction:"Es incorrecta. Se desarrollaron en zonas con poca lluvia, pero con grandes ríos."},
+      {wrong:"La escritura jeroglífica nació en Mesopotamia.", correction:"Es incorrecta. La escritura jeroglífica nació en Egipto."},
+      {wrong:"Los diques servían para transportar agua a los cultivos.", correction:"Es incorrecta. Los diques contenían el agua; los canales la transportaban."}
+    ],
+    shortGlobal:{
+      q:"Relaciona el aprovechamiento del agua con la aparición de sociedades complejas.",
+      model:"El aprovechamiento del agua mejoró la agricultura, aumentó la producción y eso hizo crecer la población, el comercio y una organización social más compleja."
     }
+  },
 
-    function markDone(){
-      state.done.add(state.current);
-      updateProgress();
+  {
+    type:"normal",
+    title:"Pantalla 6 · Mesopotamia: base",
+    subtitle:"Tigris, Éufrates, significado y ciudades-Estado.",
+    text:"Mesopotamia surgió en torno a los ríos Tigris y Éufrates; de hecho, su nombre significa 'entre ríos'. Se organizó en ciudades-Estado independientes, con una ciudad principal y campos alrededor. En estas ciudades eran muy importantes la artesanía y el comercio. Estaban gobernadas por reyes.",
+    blanks:[
+      {label:"Ríos", answers:["tigris y eufrates"], options:["Tigris y Éufrates","Nilo y Tajo","Danubio y Rin","Guadalquivir y Ebro"]},
+      {label:"Significado", answers:["entre rios"], options:["Entre ríos","Tierra negra","Tierra roja","Ciudad sagrada"]},
+      {label:"Organización", answers:["ciudades estado","ciudades-estado"], options:["Ciudades-Estado","Imperio único","Provincias","Feudos"]},
+      {label:"Jefe político", answers:["rey","reyes"], options:["Rey","Faraón","Cónsul","Emperador"]}
+    ],
+    mcq:[
+      {q:"¿Qué significa Mesopotamia?", options:["Tierra negra","Entre ríos","Tierra sagrada"], correct:1},
+      {q:"¿Cómo se organizó Mesopotamia?", options:["En ciudades-Estado","En provincias romanas","En reinos feudales"], correct:0},
+      {q:"¿Quién gobernaba cada ciudad?", options:["El faraón","El rey","El escriba"], correct:1}
+    ],
+    tf:[
+      {q:"Mesopotamia surgió junto al Nilo.", correct:false},
+      {q:"El ejército era importante para la defensa de la ciudad.", correct:true}
+    ],
+    short:[
+      {q:"Explica qué era una ciudad-Estado en Mesopotamia.", model:"Era una ciudad principal con sus campos alrededor que funcionaba de forma independiente y tenía su propio gobierno."},
+      {q:"¿Por qué crecieron las ciudades mesopotámicas?", model:"Crecieron gracias a la artesanía, el comercio y la agricultura."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 7 · Imperios mesopotámicos",
+    subtitle:"Akkadio, babilónico, asirio y persa.",
+    text:"Las ciudades mesopotámicas estaban en continuo conflicto y algunas lograron imponerse sobre otras, formando grandes imperios. Los cuatro grandes imperios fueron el akkadio, el babilónico, el asirio y el persa. Con Sargón se formó el reino de Akkad; Babilonia tuvo una etapa muy próspera con Hammurabi.",
+    blanks:[
+      {label:"1.º imperio", answers:["akkadio","acadio"], options:["Akkadio","Babilónico","Asirio","Persa"]},
+      {label:"2.º imperio", answers:["babilonico"], options:["Babilónico","Akkadio","Asirio","Persa"]},
+      {label:"3.º imperio", answers:["asirio"], options:["Asirio","Persa","Babilónico","Akkadio"]},
+      {label:"4.º imperio", answers:["persa"], options:["Persa","Asirio","Akkadio","Babilónico"]},
+      {label:"Rey de Babilonia", answers:["hammurabi"], options:["Hammurabi","Narmer","Ciro","Ramsés"]},
+      {label:"Rey persa", answers:["ciro"], options:["Ciro","Sargón","Narmer","Ra"]}
+    ],
+    mcq:[
+      {q:"¿Cuál fue uno de los grandes imperios mesopotámicos?", options:["Carolingio","Asirio","Bizantino"], correct:1},
+      {q:"¿Con qué rey se asocia Akkad?", options:["Narmer","Sargón","Ra"], correct:1},
+      {q:"¿Qué ciudad fue importante en el imperio asirio?", options:["Tebas","Nínive","Menfis"], correct:1}
+    ],
+    tf:[
+      {q:"Hammurabi se relaciona con Babilonia.", correct:true},
+      {q:"El imperio persa fue el primero de todos.", correct:false}
+    ],
+    short:[
+      {q:"Nombra los cuatro grandes imperios mesopotámicos.", model:"Los cuatro grandes imperios mesopotámicos fueron el akkadio, el babilónico, el asirio y el persa."},
+      {q:"¿Por qué hubo tantos cambios políticos en Mesopotamia?", model:"Porque las ciudades-Estado estaban en conflicto continuo y trataban de dominar a las demás."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 8 · Arte mesopotámico",
+    subtitle:"Función, arquitectura, zigurat, escultura y relieve.",
+    text:"El arte mesopotámico tenía como finalidad ensalzar a los poderosos y rendir gloria a los dioses. En arquitectura se realizaron grandes construcciones con ladrillo y barro, y se utilizó el arco y la bóveda. Los edificios principales eran los palacios y el zigurat. En escultura dominaban las figuras idealizadas y frontales.",
+    blanks:[
+      {label:"Función", answers:["ensalzar a los poderosos y rendir gloria a los dioses","glorificar a los dioses y ensalzar a los poderosos"], options:["Ensalzar a los poderosos y glorificar a los dioses","Decorar casas","Solo entretener","No tenía función"]},
+      {label:"Materiales", answers:["ladrillo y barro","barro y ladrillo"], options:["Ladrillo y barro","Piedra y mármol","Cristal y hierro","Hormigón armado"]},
+      {label:"Elementos", answers:["arco y boveda","boveda y arco"], options:["Arco y bóveda","Arco y cúpula","Solo columnas","Dintel y frontón"]},
+      {label:"Edificio religioso", answers:["zigurat"], options:["Zigurat","Pirámide","Mastaba","Hipogeo"]},
+      {label:"Escultura", answers:["idealizada y frontal","frontal e idealizada"], options:["Idealizada y frontal","Muy naturalista","Abstracta","Barroca"]}
+    ],
+    mcq:[
+      {q:"¿Cuál era el edificio religioso más característico de Mesopotamia?", options:["Pirámide","Zigurat","Hipogeo"], correct:1},
+      {q:"¿Qué usaban en arquitectura?", options:["Arco y bóveda","Hormigón y cúpula","Solo columnas"], correct:0},
+      {q:"¿Cómo era la escultura mesopotámica?", options:["Idealizada y frontal","Muy naturalista","Perspectiva perfecta"], correct:0}
+    ],
+    tf:[
+      {q:"El relieve mesopotámico mostraba más movimiento que la escultura.", correct:true},
+      {q:"El zigurat era una tumba egipcia.", correct:false}
+    ],
+    short:[
+      {q:"Explica qué era un zigurat.", model:"Era un templo mesopotámico construido en terrazas con forma piramidal y un santuario arriba."},
+      {q:"Diferencia escultura y relieve en Mesopotamia.", model:"La escultura era más idealizada y frontal, mientras que el relieve tenía más detalle, realismo y movimiento."}
+    ]
+  },
+
+  {
+    type:"challenge",
+    title:"Reto acumulativo 2 · Mesopotamia en conjunto",
+    subtitle:"Mesopotamia, imperios, zigurat, escritura y diferencias con Egipto.",
+    text:"Este reto mezcla territorio, política, imperios, arte y escritura de Mesopotamia, y te obliga a compararla con Egipto.",
+    mixedTest:[
+      {q:"¿Qué significa Mesopotamia?", options:["Tierra negra","Entre ríos","Casa del dios"], correct:1},
+      {q:"¿Qué imperio se asocia a Hammurabi?", options:["Asirio","Babilónico","Persa"], correct:1},
+      {q:"¿Qué edificio era un templo mesopotámico?", options:["Mastaba","Zigurat","Hipogeo"], correct:1}
+    ],
+    mixedBlanks:[
+      {label:"Ríos de Mesopotamia", answers:["tigris y eufrates"], options:["Tigris y Éufrates","Nilo","Tajo y Duero","Danubio y Rin"]},
+      {label:"Escritura mesopotámica", answers:["cuneiforme"], options:["Cuneiforme","Jeroglífica","Latina","Griega"]},
+      {label:"Organización política", answers:["ciudades estado","ciudades-estado"], options:["Ciudades-Estado","Imperio unificado","Reinos feudales","Repúblicas"]},
+      {label:"Edificio religioso", answers:["zigurat"], options:["Zigurat","Mastaba","Pirámide","Hipogeo"]}
+    ],
+    errorItems:[
+      {wrong:"Mesopotamia estaba organizada en un único Estado gobernado por el faraón.", correction:"Es incorrecta. Mesopotamia se organizó en ciudades-Estado y estaba gobernada por reyes, no por un faraón."},
+      {wrong:"El zigurat era una tumba egipcia.", correction:"Es incorrecta. El zigurat era un templo mesopotámico."},
+      {wrong:"La escultura mesopotámica se caracteriza por el uso de colores planos.", correction:"Es incorrecta. La escultura mesopotámica era frontal e idealizada; los colores planos se asocian más a la pintura egipcia."}
+    ],
+    shortGlobal:{
+      q:"Explica una diferencia básica entre Mesopotamia y Egipto.",
+      model:"Mesopotamia se organizó en ciudades-Estado junto al Tigris y el Éufrates, mientras que Egipto fue un Estado unificado en torno al Nilo."
     }
+  },
 
-    function updateProgress(){
-      const pct = Math.round((state.done.size / screens.length) * 100);
-      progressPill.textContent = "Progreso: " + pct + "%";
-      progressBar.style.width = pct + "%";
+  {
+    type:"normal",
+    title:"Pantalla 9 · Egipto: base",
+    subtitle:"Nilo, Narmer, unificación y faraón.",
+    text:"Egipto surgió en torno al río Nilo. Su origen se sitúa cuando, hacia el 3000 a. C., el rey Narmer unificó el Alto Egipto y el Bajo Egipto, creando un Estado fuerte y unificado. En Egipto el faraón tenía poder absoluto, político, militar y religioso, y era considerado un dios.",
+    blanks:[
+      {label:"Río", answers:["nilo"], options:["Nilo","Tigris","Éufrates","Indo"]},
+      {label:"Rey unificador", answers:["narmer"], options:["Narmer","Hammurabi","Ciro","Sargón"]},
+      {label:"Unificación", answers:["alto egipto y bajo egipto","bajo egipto y alto egipto"], options:["Alto Egipto y Bajo Egipto","Roma y Grecia","Norte y Sur de Italia","Tebas y Babilonia"]},
+      {label:"Gobernante", answers:["faraon"], options:["Faraón","Rey","Cónsul","Emperador"]}
+    ],
+    mcq:[
+      {q:"¿En torno a qué río surgió Egipto?", options:["Nilo","Tigris","Éufrates"], correct:0},
+      {q:"¿Quién unificó el Alto y el Bajo Egipto?", options:["Narmer","Sargón","Ciro"], correct:0},
+      {q:"¿Cómo era el poder del faraón?", options:["Limitado","Absoluto","Solo militar"], correct:1}
+    ],
+    tf:[
+      {q:"Narmer unificó Egipto.", correct:true},
+      {q:"El faraón no tenía relación con la religión.", correct:false}
+    ],
+    short:[
+      {q:"Explica por qué el faraón tenía tanto poder.", model:"Porque concentraba el poder político, militar y religioso y además era considerado un dios."},
+      {q:"¿Qué importancia tuvo Narmer?", model:"Narmer fue importante porque unificó el Alto y el Bajo Egipto y creó un Estado fuerte y unificado."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 10 · Sociedad egipcia",
+    subtitle:"Privilegiados, no privilegiados, esclavos y mujeres.",
+    text:"La sociedad egipcia estaba muy jerarquizada. Entre los privilegiados estaban el faraón y su familia, los altos funcionarios y los sacerdotes. Entre los no privilegiados se encontraba la mayoría de la población: campesinos, artesanos y comerciantes. También había esclavos. Las mujeres egipcias tenían derechos poco habituales en otras civilizaciones antiguas.",
+    blanks:[
+      {label:"Privilegiados", answers:["faraon altos funcionarios y sacerdotes","faraon y su familia altos funcionarios y sacerdotes"], options:["Faraón, altos funcionarios y sacerdotes","Solo esclavos","Campesinos y comerciantes","Artesanos y soldados"]},
+      {label:"No privilegiados", answers:["campesinos artesanos y comerciantes"], options:["Campesinos, artesanos y comerciantes","Solo faraones","Solo sacerdotes","Solo escribas"]},
+      {label:"Ejemplos femeninos", answers:["hatshepsut y nefertiti","nefertiti y hatshepsut"], options:["Hatshepsut y Nefertiti","Safo y Helena","Cleopatra y Atenea","Livia y Penélope"]}
+    ],
+    mcq:[
+      {q:"¿Qué grupo formaba la mayor parte de la población libre?", options:["Sacerdotes","Campesinos, artesanos y comerciantes","Escribas y nobles"], correct:1},
+      {q:"¿Qué afirmación sobre las mujeres egipcias es correcta?", options:["No podían heredar","Podían tener bienes","No podían divorciarse"], correct:1},
+      {q:"¿Qué dos mujeres destacadas aparecen en el tema?", options:["Safo y Cleopatra","Hatshepsut y Nefertiti","Penélope y Helena"], correct:1}
+    ],
+    tf:[
+      {q:"La sociedad egipcia era poco jerarquizada.", correct:false},
+      {q:"Las mujeres egipcias podían tener algunos derechos poco habituales en otras civilizaciones antiguas.", correct:true}
+    ],
+    short:[
+      {q:"Explica cómo estaba dividida la sociedad egipcia.", model:"Se dividía en privilegiados, no privilegiados y esclavos, con grandes diferencias entre los grupos."},
+      {q:"Señala dos derechos de las mujeres egipcias.", model:"Podían tener bienes, heredar, escoger marido, divorciarse o regentar un negocio."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 11 · Religión egipcia",
+    subtitle:"Politeísmo, dioses y Ka.",
+    text:"La religión egipcia era politeísta. El dios más venerado era Ra, dios Sol, al que se asoció Amón-Ra. Otros dioses importantes eran Osiris, Isis, Horus, Anubis y Tot. Para los egipcios, el ser humano estaba formado por cuerpo y alma, llamada Ka.",
+    blanks:[
+      {label:"Tipo de religión", answers:["politeista"], options:["Politeísta","Monoteísta","Agnóstica","Cristiana"]},
+      {label:"Dios solar", answers:["ra","amon-ra","amon ra"], options:["Ra","Osiris","Tot","Anubis"]},
+      {label:"Dios de los muertos", answers:["osiris"], options:["Osiris","Ra","Tot","Horus"]},
+      {label:"Diosa de la fertilidad", answers:["isis"], options:["Isis","Hathor","Atenea","Venus"]},
+      {label:"Dios de la momificación", answers:["anubis"], options:["Anubis","Ra","Horus","Tot"]},
+      {label:"Alma", answers:["ka"], options:["Ka","Baal","Maat","Aton"]}
+    ],
+    mcq:[
+      {q:"¿Cómo era la religión egipcia?", options:["Monoteísta","Politeísta","Atea"], correct:1},
+      {q:"¿Quién era el dios de los muertos?", options:["Osiris","Ra","Tot"], correct:0},
+      {q:"¿Qué nombre recibía el alma?", options:["Ka","Maat","Baal"], correct:0}
+    ],
+    tf:[
+      {q:"Anubis se relacionaba con la momificación.", correct:true},
+      {q:"La religión egipcia creía en un solo dios.", correct:false}
+    ],
+    short:[
+      {q:"Nombra tres dioses egipcios y su función.", model:"Por ejemplo: Ra era el dios Sol, Osiris el dios de los muertos y Anubis el dios de la momificación."},
+      {q:"¿Qué era el Ka?", model:"El Ka era el alma del ser humano según las creencias egipcias."}
+    ]
+  },
+
+  {
+    type:"challenge",
+    title:"Reto acumulativo 3 · Egipto base, sociedad y religión",
+    subtitle:"Repaso de Nilo, Narmer, faraón, jerarquía social y dioses.",
+    text:"En este reto tienes que unir política, sociedad y religión en Egipto.",
+    mixedTest:[
+      {q:"¿Quién unificó Egipto?", options:["Narmer","Hammurabi","Ciro"], correct:0},
+      {q:"¿Cómo era la religión egipcia?", options:["Monoteísta","Politeísta","Cristiana"], correct:1},
+      {q:"¿Quién tenía poder absoluto en Egipto?", options:["El rey de Babilonia","El faraón","El ejército"], correct:1}
+    ],
+    mixedBlanks:[
+      {label:"Río de Egipto", answers:["nilo"], options:["Nilo","Tigris","Éufrates","Indo"]},
+      {label:"Rey unificador", answers:["narmer"], options:["Narmer","Ciro","Hammurabi","Sargón"]},
+      {label:"Jefe del Estado", answers:["faraon"], options:["Faraón","Rey","Cónsul","Senador"]},
+      {label:"Dios del cielo", answers:["horus"], options:["Horus","Osiris","Tot","Anubis"]}
+    ],
+    errorItems:[
+      {wrong:"Narmer fue un rey de Babilonia.", correction:"Es incorrecta. Narmer fue el rey que unificó el Alto y el Bajo Egipto."},
+      {wrong:"La religión egipcia era monoteísta.", correction:"Es incorrecta. La religión egipcia era politeísta."},
+      {wrong:"Las mujeres egipcias no podían tener bienes.", correction:"Es incorrecta. Las mujeres egipcias sí podían tener bienes y otros derechos."}
+    ],
+    shortGlobal:{
+      q:"Relaciona el poder del faraón con la sociedad y la religión egipcias.",
+      model:"El faraón tenía poder absoluto porque gobernaba el Estado y además era considerado un dios, dentro de una sociedad muy jerarquizada y religiosa."
     }
+  },
 
-    function fillJump(){
-      jumpSelect.innerHTML = "";
-      screens.forEach((s,i)=>{
-        const opt = document.createElement("option");
-        opt.value = i;
-        opt.textContent = s.title;
-        jumpSelect.appendChild(opt);
-      });
-      jumpSelect.value = state.current;
+  {
+    type:"normal",
+    title:"Pantalla 12 · Momificación",
+    subtitle:"Órganos, natrón, serrín, vendas, vasos canopes y ajuar.",
+    text:"Para que el difunto accediera al reino de Osiris, el cuerpo debía estar incorrupto, por lo que se practicaba la momificación. Consistía en extraer algunos órganos, cubrir y rellenar el cuerpo con natrón durante 40 días, limpiarlo, introducir serrín y cubrirlo con vendas. Algunas vísceras se colocaban en vasos canopes.",
+    blanks:[
+      {label:"Se extraen", answers:["organos","algunos organos"], options:["Órganos","Joyas","Ropas","Instrumentos"]},
+      {label:"Se usa", answers:["natron"], options:["Natrón","Aceite","Barro","Arena"]},
+      {label:"Se introduce", answers:["serrin"], options:["Serrín","Agua","Aceite","Piedra"]},
+      {label:"Se cubre con", answers:["vendas"], options:["Vendas","Madera","Papel","Arcilla"]},
+      {label:"Vísceras", answers:["vasos canopes","canopes"], options:["Vasos canopes","Pirámides","Pilonos","Zigurats"]},
+      {label:"Se deposita en", answers:["sarcofago"], options:["Sarcófago","Palacio","Templo","Tumba circular"]}
+    ],
+    mcq:[
+      {q:"¿Para qué se momificaba el cuerpo?", options:["Para conservarlo","Para venderlo","Para decorarlo"], correct:0},
+      {q:"¿Qué producto se usaba durante 40 días?", options:["Natrón","Papiro","Barro"], correct:0},
+      {q:"¿Dónde se guardaban algunas vísceras?", options:["En vasos canopes","En templos","En palacios"], correct:0}
+    ],
+    tf:[
+      {q:"La momificación estaba relacionada con las creencias funerarias egipcias.", correct:true},
+      {q:"Los vasos canopes servían para guardar joyas.", correct:false}
+    ],
+    short:[
+      {q:"Resume el proceso de momificación.", model:"Se extraían algunos órganos, se trataba el cuerpo con natrón, se rellenaba con serrín, se envolvía con vendas y se colocaba en un sarcófago."},
+      {q:"¿Por qué era importante conservar el cuerpo?", model:"Porque los egipcios creían que el cuerpo debía permanecer incorrupto para acceder al reino de Osiris."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 13 · Juicio de Osiris",
+    subtitle:"Balanza, corazón, pluma, Anubis, Tot y Horus.",
+    text:"Tras la muerte, Osiris sometía al difunto al juicio de Osiris. Para ello, Anubis ponía el corazón del difunto en un lado de una balanza y en el otro una pluma. Tot era el encargado de apuntar el resultado. Si el difunto superaba la prueba, Horus lo acompañaba hasta el reino de Osiris.",
+    blanks:[
+      {label:"Objeto 1", answers:["corazon"], options:["Corazón","Máscara","Vaso","Papiro"]},
+      {label:"Objeto 2", answers:["pluma"], options:["Pluma","Espada","Corona","Llave"]},
+      {label:"Dios que pesa", answers:["anubis"], options:["Anubis","Ra","Tot","Horus"]},
+      {label:"Dios que anota", answers:["tot"], options:["Tot","Anubis","Osiris","Ra"]},
+      {label:"Dios que acompaña", answers:["horus"], options:["Horus","Ra","Anubis","Isis"]}
+    ],
+    mcq:[
+      {q:"¿Quién colocaba el corazón en la balanza?", options:["Anubis","Ra","Narmer"], correct:0},
+      {q:"¿Qué había en el otro lado de la balanza?", options:["Una pluma","Una máscara","Una estatua"], correct:0},
+      {q:"¿Quién anotaba el resultado?", options:["Tot","Isis","Ra"], correct:0}
+    ],
+    tf:[
+      {q:"Si el difunto superaba la prueba, Horus lo acompañaba al reino de Osiris.", correct:true},
+      {q:"Anubis era quien anotaba el resultado del juicio.", correct:false}
+    ],
+    short:[
+      {q:"Explica de forma breve el juicio de Osiris.", model:"En el juicio de Osiris, Anubis pesaba el corazón del difunto frente a una pluma, Tot anotaba el resultado y Horus lo acompañaba si superaba la prueba."},
+      {q:"¿Qué ocurría si el corazón pesaba más que la pluma?", model:"Si pesaba más, un monstruo devoraba al difunto."}
+    ]
+  },
+
+  {
+    type:"normal",
+    title:"Pantalla 14 · Arte egipcio",
+    subtitle:"Arquitectura, templos, tumbas, escultura y pintura.",
+    text:"El arte egipcio servía para ensalzar a los faraones y glorificar a los dioses. La arquitectura era arquitrabada o adintelada, con cubiertas planas, sin arco ni bóveda, y destacaba por el colosalismo y el uso de piedra. Los edificios funerarios, por orden de aparición, fueron la mastaba, la pirámide y el hipogeo.",
+    blanks:[
+      {label:"Función", answers:["ensalzar a sus faraones y glorificar a sus dioses","glorificar a sus dioses y ensalzar a sus faraones"], options:["Ensalzar a los faraones y glorificar a los dioses","Decorar casas","Solo entretener","No tenía función"]},
+      {label:"Arquitectura", answers:["arquitrabada o adintelada","adintelada","arquitrabada"], options:["Arquitrabada o adintelada","Con bóvedas","Gótica","Románica"]},
+      {label:"Material", answers:["piedra"], options:["Piedra","Cristal","Hierro","Ladrillo cocido"]},
+      {label:"Edificio religioso", answers:["templo"], options:["Templo","Zigurat","Foro","Anfiteatro"]},
+      {label:"Tumbas", answers:["mastaba piramide e hipogeo","mastaba piramide hipogeo"], options:["Mastaba, pirámide e hipogeo","Hipogeo, mastaba y zigurat","Pirámide, zigurat y tumba","Pilono, patio y santuario"]},
+      {label:"Escultura", answers:["frontal e idealizada","idealizada y frontal"], options:["Frontal e idealizada","Muy naturalista","Abstracta","Impresionista"]},
+      {label:"Pintura", answers:["colores planos","figuras rigidas e idealizadas y colores planos","rigidez y colores planos"], options:["Colores planos","Perspectiva moderna","Claroscuro barroco","Solo blanco y negro"]}
+    ],
+    mcq:[
+      {q:"¿Cómo era la arquitectura egipcia?", options:["Adintelada","Con bóvedas","Gótica"], correct:0},
+      {q:"¿Cuál era la casa de los dioses?", options:["El templo","La mastaba","El palacio"], correct:0},
+      {q:"¿Qué tumbas aparecieron por orden?", options:["Pirámide, mastaba, hipogeo","Mastaba, pirámide, hipogeo","Hipogeo, pirámide, mastaba"], correct:1}
+    ],
+    tf:[
+      {q:"La arquitectura egipcia utilizaba principalmente arco y bóveda.", correct:false},
+      {q:"La pintura egipcia empleaba colores planos.", correct:true}
+    ],
+    short:[
+      {q:"Nombra las tres grandes tumbas egipcias por orden.", model:"Las tres grandes tumbas egipcias por orden son la mastaba, la pirámide y el hipogeo."},
+      {q:"Explica una diferencia entre arte mesopotámico y arte egipcio.", model:"El arte egipcio usó arquitectura adintelada y piedra, mientras que en Mesopotamia destacaron el arco, la bóveda y materiales más pobres."}
+    ]
+  },
+
+  {
+    type:"challenge",
+    title:"Reto acumulativo 4 · Religión, momificación y arte egipcio",
+    subtitle:"Religión funeraria, juicio, tumbas y arte egipcio.",
+    text:"En este reto ya debes conectar religión, momificación, juicio de Osiris y arte egipcio.",
+    mixedTest:[
+      {q:"¿Qué dios se relaciona con la momificación?", options:["Anubis","Narmer","Ciro"], correct:0},
+      {q:"¿Qué tumba egipcia apareció después de la mastaba?", options:["Pirámide","Zigurat","Templo"], correct:0},
+      {q:"¿Cómo era la arquitectura egipcia?", options:["Adintelada","Con bóvedas","Con arcos"], correct:0}
+    ],
+    mixedBlanks:[
+      {label:"Dios del juicio de los muertos", answers:["osiris"], options:["Osiris","Ra","Horus","Tot"]},
+      {label:"Dios que pesa el corazón", answers:["anubis"], options:["Anubis","Ra","Tot","Narmer"]},
+      {label:"Dios que escribe el resultado", answers:["tot"], options:["Tot","Horus","Osiris","Ra"]},
+      {label:"Tumba bajo tierra", answers:["hipogeo"], options:["Hipogeo","Zigurat","Templo","Palacio"]}
+    ],
+    errorItems:[
+      {wrong:"Los vasos canopes servían para guardar joyas.", correction:"Es incorrecta. Los vasos canopes servían para guardar algunas vísceras del difunto."},
+      {wrong:"Anubis anotaba el resultado del juicio de Osiris.", correction:"Es incorrecta. Tot era quien anotaba el resultado."},
+      {wrong:"El hipogeo era un templo dedicado al dios Ra.", correction:"Es incorrecta. El hipogeo era una tumba subterránea."},
+      {wrong:"La arquitectura egipcia utilizaba arco y bóveda como elementos principales.", correction:"Es incorrecta. La arquitectura egipcia era adintelada."}
+    ],
+    shortGlobal:{
+      q:"Relaciona religión funeraria y arte egipcio.",
+      model:"La religión funeraria influyó mucho en el arte egipcio porque se construyeron tumbas, se practicó la momificación y se decoraron templos y espacios funerarios para glorificar a dioses y faraones."
     }
+  },
 
-    function setFeedback(id, ok, msg){
-      const box = document.getElementById(id);
-      if(!box) return;
-      box.className = "feedback " + (ok ? "ok" : "bad");
-      box.innerHTML = msg;
-    }
+  {
+    type:"normal",
+    title:"Pantalla 15 · Comparación final: Mesopotamia vs Egipto",
+    subtitle:"Ríos, escritura, política, religión y arte.",
+    text:"Mesopotamia y Egipto fueron civilizaciones hidráulicas, pero presentaron diferencias claras. Mesopotamia se desarrolló junto al Tigris y el Éufrates y se organizó en ciudades-Estado; Egipto creció en torno al Nilo y formó un Estado unificado bajo el faraón. En Mesopotamia surgió la escritura cuneiforme y en Egipto la jeroglífica.",
+    blanks:[
+      {label:"Ríos mesopotámicos", answers:["tigris y eufrates"], options:["Tigris y Éufrates","Nilo","Tajo y Duero","Indo y Ganges"]},
+      {label:"Río egipcio", answers:["nilo"], options:["Nilo","Éufrates","Tigris","Tajo"]},
+      {label:"Escritura mesopotámica", answers:["cuneiforme"], options:["Cuneiforme","Jeroglífica","Latina","Griega"]},
+      {label:"Escritura egipcia", answers:["jeroglifica"], options:["Jeroglífica","Cuneiforme","Fenicia","Árabe"]},
+      {label:"Política mesopotámica", answers:["ciudades estado","ciudades-estado"], options:["Ciudades-Estado","Estado unificado","República","Imperio romano"]},
+      {label:"Edificio mesopotámico", answers:["zigurat"], options:["Zigurat","Hipogeo","Mastaba","Foro"]},
+      {label:"Tumbas egipcias", answers:["mastaba piramide e hipogeo","mastaba piramide hipogeo"], options:["Mastaba, pirámide e hipogeo","Zigurat, templo y palacio","Hipogeo, foro y templo","Mastaba, arco y bóveda"]}
+    ],
+    mcq:[
+      {q:"¿Qué edificio religioso caracteriza a Mesopotamia?", options:["Zigurat","Mastaba","Hipogeo"], correct:0},
+      {q:"¿Qué escritura corresponde a Egipto?", options:["Cuneiforme","Jeroglífica","Fenicia"], correct:1},
+      {q:"¿Cuál es una diferencia política básica?", options:["Mesopotamia tuvo ciudades-Estado y Egipto un Estado unificado con faraón","Egipto tuvo ciudades-Estado y Mesopotamia un faraón","Fueron iguales"], correct:0}
+    ],
+    tf:[
+      {q:"Tanto Mesopotamia como Egipto fueron politeístas.", correct:true},
+      {q:"En Egipto el edificio religioso principal era el zigurat.", correct:false}
+    ],
+    short:[
+      {q:"Escribe dos diferencias entre Mesopotamia y Egipto.", model:"Mesopotamia se organizó en ciudades-Estado junto al Tigris y el Éufrates y usó escritura cuneiforme; Egipto se organizó en un Estado unificado en torno al Nilo y usó escritura jeroglífica."},
+      {q:"Escribe una semejanza entre ambas civilizaciones.", model:"Ambas fueron civilizaciones hidráulicas y politeístas, y desarrollaron escritura y arte."}
+    ]
+  },
 
-    function toggleModel(id){
-     function getPrimaryAnswer(blank){
-  if (!blank || !blank.answers || !blank.answers.length) return "";
-  return blank.answers[0];
+  {
+    type:"final",
+    title:"Pantalla 16 · Examen aleatorio general",
+    subtitle:"Repaso final de todos los apuntes de la profesora."
+  }
+];
+
+const state = {
+  current:0,
+  done:new Set()
+};
+
+const screenContainer = document.getElementById("screenContainer");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const jumpSelect = document.getElementById("jumpSelect");
+const screenPill = document.getElementById("screenPill");
+const progressPill = document.getElementById("progressPill");
+const progressBar = document.getElementById("progressBar");
+
+function normalize(str){
+  return (str || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/[.,;:¡!¿?()"]/g,"")
+    .replace(/\s+/g," ")
+    .trim();
 }
 
-function buildOptionsForBlank(blanks, index){
-  const correct = getPrimaryAnswer(blanks[index]);
-
-  const pool = blanks
-    .map((b, i) => i !== index ? getPrimaryAnswer(b) : null)
-    .filter(Boolean);
-
-  const uniquePool = [...new Set(pool)];
-  const distractors = shuffle(uniquePool).slice(0, 3);
-
-  return shuffle([correct, ...distractors]);
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
-    function createMCQ(mcq,prefix,title="3 preguntas tipo test"){
-      return `
-        <div class="card">
-          <h3>${title}</h3>
-          ${mcq.map((q,i)=>`
-            <div class="question">
-              <p>${i+1}. ${q.q}</p>
-              <div class="options">
-                ${q.options.map((op,j)=>`
-                  <label class="option">
-                    <input type="radio" name="${prefix}_mcq_${i}" value="${j}">
-                    <span>${op}</span>
-                  </label>
-                `).join("")}
-              </div>
-            </div>
-          `).join("")}
-          <div class="actions">
-            <button class="btn-primary" onclick='checkMCQ("${prefix}", ${JSON.stringify(mcq).replace(/"/g,"&quot;")})'>Corregir test</button>
-          </div>
-          <div class="feedback" id="${prefix}_mcq_feedback"></div>
-        </div>
-      `;
-    }
+function markDone(){
+  state.done.add(state.current);
+  updateProgress();
+}
 
-    function createTF(tf,prefix,title="2 verdadero o falso"){
-      return `
-        <div class="card">
-          <h3>${title}</h3>
-          ${tf.map((q,i)=>`
-            <div class="question">
-              <p>${i+1}. ${q.q}</p>
-              <div class="options">
-                <label class="option"><input type="radio" name="${prefix}_tf_${i}" value="true"><span>Verdadero</span></label>
-                <label class="option"><input type="radio" name="${prefix}_tf_${i}" value="false"><span>Falso</span></label>
-              </div>
-            </div>
-          `).join("")}
-          <div class="actions">
-            <button class="btn-primary" onclick='checkTF("${prefix}", ${JSON.stringify(tf).replace(/"/g,"&quot;")})'>Corregir verdadero/falso</button>
-          </div>
-          <div class="feedback" id="${prefix}_tf_feedback"></div>
-        </div>
-      `;
-    }
+function updateProgress(){
+  const pct = Math.round((state.done.size / screens.length) * 100);
+  progressPill.textContent = "Progreso: " + pct + "%";
+  progressBar.style.width = pct + "%";
+}
 
-    function createShort(short,prefix,title="2 preguntas cortas"){
-      return `
-        <div class="card">
-          <h3>${title}</h3>
-          ${short.map((q,i)=>`
-            <div class="question">
-              <p>${i+1}. ${q.q}</p>
-              <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
-              <div class="actions">
-                <button class="btn-secondary" onclick='toggleModel("${prefix}_model_${i}")'>Ver modelo</button>
-              </div>
-              <div class="model" id="${prefix}_model_${i}">
-                <strong>Modelo correcto:</strong><br>${q.model}
-              </div>
-            </div>
-          `).join("")}
-        </div>
-      `;
-    }
+function fillJump(){
+  jumpSelect.innerHTML = "";
+  screens.forEach((s,i)=>{
+    const opt = document.createElement("option");
+    opt.value = i;
+    opt.textContent = s.title;
+    jumpSelect.appendChild(opt);
+  });
+  jumpSelect.value = state.current;
+}
 
-    function createMiniExam(screen,prefix){
-      const mcqItem = screen.mcq[Math.floor(Math.random()*screen.mcq.length)];
-      const blankItem = screen.blanks[Math.floor(Math.random()*screen.blanks.length)];
-      const tfItem = screen.tf[Math.floor(Math.random()*screen.tf.length)];
-      const shortItem = screen.short[Math.floor(Math.random()*screen.short.length)];
+function setFeedback(id, ok, msg){
+  const box = document.getElementById(id);
+  if(!box) return;
+  box.className = "feedback " + (ok ? "ok" : "bad");
+  box.innerHTML = msg;
+}
 
-      return `
-        <div class="card challenge">
-          <h3>Mini examen aleatorio de esta pantalla</h3>
+function toggleModel(id){
+  const el = document.getElementById(id);
+  if(el) el.classList.toggle("show");
+}
 
-          <div class="question">
-            <p>1. Test: ${mcqItem.q}</p>
-            <div class="options">
-              ${mcqItem.options.map((op,i)=>`
-                <label class="option">
-                  <input type="radio" name="${prefix}_exam_mcq" value="${i}">
-                  <span>${op}</span>
-                </label>
-              `).join("")}
-            </div>
-          </div>
-
-          <div class="question">
-            <p>2. Completa: ${blankItem.label}</p>
-            <input type="text" id="${prefix}_exam_blank" placeholder="Escribe aquí">
-          </div>
-
-          <div class="question">
-            <p>3. Verdadero o falso: ${tfItem.q}</p>
-            <div class="options">
-              <label class="option"><input type="radio" name="${prefix}_exam_tf" value="true"><span>Verdadero</span></label>
-              <label class="option"><input type="radio" name="${prefix}_exam_tf" value="false"><span>Falso</span></label>
-            </div>
-          </div>
-
-          <div class="question">
-            <p>4. Pregunta corta: ${shortItem.q}</p>
-            <textarea id="${prefix}_exam_short" placeholder="Escribe tu respuesta..."></textarea>
-            <div class="model show">
-              <strong>Modelo orientativo:</strong><br>${shortItem.model}
-            </div>
-          </div>
-
-          <div class="actions">
-            <button class="btn-accent" onclick='checkMiniExam("${prefix}", ${JSON.stringify(mcqItem).replace(/"/g,"&quot;")}, ${JSON.stringify(blankItem).replace(/"/g,"&quot;")}, ${JSON.stringify(tfItem).replace(/"/g,"&quot;")})'>Corregir mini examen</button>
-          </div>
-          <div class="feedback" id="${prefix}_exam_feedback"></div>
-        </div>
-      `;
-    }
-
-    function createChallenge(screen,prefix){
-      return `
-        <div class="grid">
-          <div>
-            <div class="card lead challenge">
-              <h3>Texto breve</h3>
-              <p>${screen.text}</p>
-            </div>
-
-            ${createMCQ(screen.mixedTest,prefix+"_mix","1. Test mezclado")}
-            ${createBlanks(screen.mixedBlanks,prefix+"_mixed","2. Mini esquema mixto")}
-
-           function createBlanks(blanks,prefix,title="Mini esquema a completar"){
+function createDropdowns(blanks, prefix, title="Mini esquema a completar"){
   return `
     <div class="card">
       <h3>${title}</h3>
       <div class="blanks">
-        ${blanks.map((b,i)=> {
-          const options = buildOptionsForBlank(blanks, i);
-          return `
-            <div class="blank-row">
-              <label>${b.label}</label>
-              <select id="${prefix}_blank_${i}">
-                <option value="">Selecciona una opción</option>
-                ${options.map(op => `<option value="${op}">${op}</option>`).join("")}
-              </select>
-            </div>
-          `;
-        }).join("")}
+        ${blanks.map((b,i)=>`
+          <div class="blank-row">
+            <label for="${prefix}_blank_${i}">${b.label}</label>
+            <select id="${prefix}_blank_${i}" onchange='checkSingleDropdown("${prefix}", ${i}, ${JSON.stringify(b).replace(/'/g,"&#39;")})'>
+              <option value="">— Elige una opción —</option>
+              ${b.options.map(op=>`<option value="${op.replace(/"/g,"&quot;")}">${op}</option>`).join("")}
+            </select>
+            <div class="mini-state" id="${prefix}_state_${i}">Pendiente</div>
+          </div>
+        `).join("")}
       </div>
       <div class="actions">
-        <button class="btn-primary" onclick='checkBlanks("${prefix}", ${JSON.stringify(blanks).replace(/"/g,"&quot;")})'>Comprobar esquema</button>
+        <button class="btn-primary" onclick='checkAllDropdowns("${prefix}", ${JSON.stringify(blanks).replace(/'/g,"&#39;")})'>Corregir esquema completo</button>
       </div>
-      function checkBlanks(prefix, raw){
-  const blanks = typeof raw === "string" ? JSON.parse(raw) : raw;
-  let score = 0;
-  let feedbackLines = [];
-
-  blanks.forEach((b,i)=>{
-    const select = document.getElementById(`${prefix}_blank_${i}`);
-    const value = normalize(select.value);
-    const good = b.answers.some(a => normalize(a) === value);
-
-    select.style.borderColor = good ? "#8fc79b" : "#d7a18f";
-    select.style.background = good ? "#f2fbf5" : "#fff4f1";
-
-    if(good){
-      score++;
-    } else {
-      feedbackLines.push(
-        `<div><strong>${b.label}:</strong> correcto → ${getPrimaryAnswer(b)}</div>`
-      );
-    }
-  });
-
-  const ok = score === blanks.length;
-
-  setFeedback(
-    `${prefix}_blank_feedback`,
-    ok,
-    ok
-      ? `Perfecto: ${score}/${blanks.length}.`
-      : `Has acertado ${score}/${blanks.length}.<br><br>${feedbackLines.join("")}`
-  );
-
-  if(ok) markDone();
+      <div class="feedback" id="${prefix}_blank_feedback"></div>
+    </div>
+  `;
 }
 
-    function createFinalExam(prefix){
-      const bankMcq = [
-        {q:"¿Qué marca el inicio de la Historia?", options:["La rueda","La escritura","La pirámide"], correct:1},
-        {q:"¿Qué ríos pertenecen a Mesopotamia?", options:["Nilo y Tajo","Tigris y Éufrates","Danubio y Rin"], correct:1},
-        {q:"¿Qué escritura corresponde a Egipto?", options:["Cuneiforme","Jeroglífica","Latina"], correct:1},
-        {q:"¿Quién unificó Egipto?", options:["Narmer","Hammurabi","Ciro"], correct:0},
-        {q:"¿Qué edificio era un templo mesopotámico?", options:["Zigurat","Mastaba","Pirámide"], correct:0},
-        {q:"¿Qué dios pesaba el corazón?", options:["Anubis","Ra","Tot"], correct:0},
-        {q:"¿Cómo era la arquitectura egipcia?", options:["Adintelada","Con bóvedas","Con arcos"], correct:0}
-      ];
-
-      const bankBlanks = [
-        {label:"Río principal de Egipto", answers:["nilo"]},
-        {label:"Escritura de Mesopotamia", answers:["cuneiforme"]},
-        {label:"Edificio religioso mesopotámico", answers:["zigurat"]},
-        {label:"Rey que unificó Egipto", answers:["narmer"]},
-        {label:"Dios de los muertos", answers:["osiris"]},
-        {label:"Tumbas egipcias por orden", answers:["mastaba piramide e hipogeo","mastaba piramide hipogeo"]}
-      ];
-
-      const bankTF = [
-        {q:"La arquitectura egipcia era adintelada.", correct:true},
-        {q:"Los vasos canopes se usaban para guardar joyas.", correct:false},
-        {q:"El faraón tenía poder absoluto.", correct:true},
-        {q:"La escritura jeroglífica nació en Mesopotamia.", correct:false},
-        {q:"La escultura mesopotámica solía ser frontal e idealizada.", correct:true},
-        {q:"Mesopotamia se organizó en un solo reino desde el principio.", correct:false}
-      ];
-
-      const bankShort = [
-        {q:"Explica por qué Mesopotamia y Egipto se llaman civilizaciones hidráulicas.", model:"Se llaman así porque aprovecharon grandes ríos para desarrollar la agricultura mediante diques y canales."},
-        {q:"Escribe una diferencia entre cuneiforme y jeroglífica.", model:"La cuneiforme se hacía en arcilla con punzón y la jeroglífica usaba pictogramas en piedra, paredes o papiro."},
-        {q:"Compara la organización política de Mesopotamia y Egipto.", model:"Mesopotamia se organizó en ciudades-Estado con reyes, mientras que Egipto fue un Estado unificado gobernado por el faraón."},
-        {q:"Relaciona religión funeraria y momificación en Egipto.", model:"La momificación era importante porque los egipcios creían que el cuerpo debía conservarse para acceder al reino de Osiris."}
-      ];
-
-      const pickedMcq = shuffle([...bankMcq]).slice(0,4);
-      const pickedBlanks = shuffle([...bankBlanks]).slice(0,3);
-      const pickedTF = shuffle([...bankTF]).slice(0,3);
-      const pickedShort = shuffle([...bankShort]).slice(0,2);
-
-      return `
-        <div class="grid">
-          <div>
-            <div class="card lead">
-              <h3>Instrucciones</h3>
-              <p>Haz este examen final como repaso general. Corrige cada parte y usa los modelos para afianzar lo esencial.</p>
-            </div>
-            ${createMCQ(pickedMcq,prefix+"_fmcq","Test general")}
-            ${createBlanks(pickedBlanks,prefix+"_fblank","Completar conceptos clave")}
-            ${createTF(pickedTF,prefix+"_ftf","Verdadero o falso general")}
-            ${createShort(pickedShort,prefix+"_fshort","Preguntas cortas finales")}
-          </div>
-          <div>
-            <div class="card challenge">
-              <h3>Objetivo final</h3>
-              <p class="small">
-                Al terminar deberías dominar:
-                civilizaciones hidráulicas, escritura, Mesopotamia, Egipto,
-                religión, momificación, juicio de Osiris y arte.
-              </p>
-              <div class="actions">
-                <button class="btn-accent" onclick="markCurrentDone()">Marcar examen como terminado</button>
-              </div>
-            </div>
+function createMCQ(mcq,prefix,title="3 preguntas tipo test"){
+  return `
+    <div class="card">
+      <h3>${title}</h3>
+      ${mcq.map((q,i)=>`
+        <div class="question">
+          <p>${i+1}. ${q.q}</p>
+          <div class="options">
+            ${q.options.map((op,j)=>`
+              <label class="option">
+                <input type="radio" name="${prefix}_mcq_${i}" value="${j}">
+                <span>${op}</span>
+              </label>
+            `).join("")}
           </div>
         </div>
-      `;
-    }
+      `).join("")}
+      <div class="actions">
+        <button class="btn-primary" onclick='checkMCQ("${prefix}", ${JSON.stringify(mcq).replace(/'/g,"&#39;")})'>Corregir test</button>
+      </div>
+      <div class="feedback" id="${prefix}_mcq_feedback"></div>
+    </div>
+  `;
+}
 
-    function renderScreen(){
-      const s = screens[state.current];
-      const prefix = "s" + state.current;
-
-      screenPill.textContent = `${s.title} · ${state.current + 1}/${screens.length}`;
-      jumpSelect.value = state.current;
-
-      let html = `
-        <div class="screen-head">
-          <div>
-            <h2>${s.title}</h2>
-            <p>${s.subtitle}</p>
+function createTF(tf,prefix,title="2 verdadero o falso"){
+  return `
+    <div class="card">
+      <h3>${title}</h3>
+      ${tf.map((q,i)=>`
+        <div class="question">
+          <p>${i+1}. ${q.q}</p>
+          <div class="options">
+            <label class="option"><input type="radio" name="${prefix}_tf_${i}" value="true"><span>Verdadero</span></label>
+            <label class="option"><input type="radio" name="${prefix}_tf_${i}" value="false"><span>Falso</span></label>
           </div>
-          <span class="pill">${s.type === "challenge" ? "Reto acumulativo" : s.type === "final" ? "Examen final" : "Pantalla de estudio"}</span>
         </div>
-      `;
+      `).join("")}
+      <div class="actions">
+        <button class="btn-primary" onclick='checkTF("${prefix}", ${JSON.stringify(tf).replace(/'/g,"&#39;")})'>Corregir verdadero/falso</button>
+      </div>
+      <div class="feedback" id="${prefix}_tf_feedback"></div>
+    </div>
+  `;
+}
 
-      if(s.type === "normal"){
-        html += `
-          <div class="grid">
-            <div>
-              <div class="card lead">
-                <h3>A. Texto breve</h3>
-                <p>${s.text}</p>
-              </div>
-              ${createBlanks(s.blanks,prefix,"B. Mini-esquema a completar")}
-              ${createMCQ(s.mcq,prefix,"C. Tres preguntas tipo test")}
-              ${createTF(s.tf,prefix,"D. Dos verdadero o falso")}
-            </div>
-            <div>
-              ${createShort(s.short,prefix,"E-F. Dos preguntas cortas + modelos")}
-              ${createMiniExam(s,prefix)}
-           function createMiniExam(screen,prefix){
+function createShort(short,prefix,title="2 preguntas cortas"){
+  return `
+    <div class="card">
+      <h3>${title}</h3>
+      ${short.map((q,i)=>`
+        <div class="question">
+          <p>${i+1}. ${q.q}</p>
+          <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+          <div class="actions">
+            <button class="btn-secondary" onclick='toggleModel("${prefix}_model_${i}")'>Ver modelo</button>
+          </div>
+          <div class="model" id="${prefix}_model_${i}">
+            <strong>Modelo correcto:</strong><br>${q.model}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function createMiniExam(screen,prefix){
   const mcqItem = screen.mcq[Math.floor(Math.random()*screen.mcq.length)];
   const blankItem = screen.blanks[Math.floor(Math.random()*screen.blanks.length)];
   const tfItem = screen.tf[Math.floor(Math.random()*screen.tf.length)];
   const shortItem = screen.short[Math.floor(Math.random()*screen.short.length)];
-
-  const miniOptions = shuffle([
-    getPrimaryAnswer(blankItem),
-    ...shuffle(
-      screen.blanks
-        .filter(b => b.label !== blankItem.label)
-        .map(getPrimaryAnswer)
-        .filter(Boolean)
-    ).slice(0,3)
-  ]);
 
   return `
     <div class="card challenge">
@@ -1322,8 +1134,8 @@ function buildOptionsForBlank(blanks, index){
       <div class="question">
         <p>2. Completa: ${blankItem.label}</p>
         <select id="${prefix}_exam_blank">
-          <option value="">Selecciona una opción</option>
-          ${miniOptions.map(op => `<option value="${op}">${op}</option>`).join("")}
+          <option value="">— Elige una opción —</option>
+          ${blankItem.options.map(op=>`<option value="${op.replace(/"/g,"&quot;")}">${op}</option>`).join("")}
         </select>
       </div>
 
@@ -1344,123 +1156,328 @@ function buildOptionsForBlank(blanks, index){
       </div>
 
       <div class="actions">
-        <button class="btn-accent" onclick='checkMiniExam("${prefix}", ${JSON.stringify(mcqItem).replace(/"/g,"&quot;")}, ${JSON.stringify(blankItem).replace(/"/g,"&quot;")}, ${JSON.stringify(tfItem).replace(/"/g,"&quot;")})'>Corregir mini examen</button>
+        <button class="btn-accent" onclick='checkMiniExam("${prefix}", ${JSON.stringify(mcqItem).replace(/'/g,"&#39;")}, ${JSON.stringify(blankItem).replace(/'/g,"&#39;")}, ${JSON.stringify(tfItem).replace(/'/g,"&#39;")})'>Corregir mini examen</button>
       </div>
       <div class="feedback" id="${prefix}_exam_feedback"></div>
     </div>
   `;
 }
 
-    function goPrev(){
-      if(state.current > 0){
-        state.current--;
-        renderScreen();
-      }
-    }
+function createChallenge(screen,prefix){
+  return `
+    <div class="grid">
+      <div>
+        <div class="card lead challenge">
+          <h3>Texto breve</h3>
+          <p>${screen.text}</p>
+        </div>
 
-    function goNext(){
-      if(state.current < screens.length - 1){
-        state.current++;
-        renderScreen();
-      }
-    }
+        ${createMCQ(screen.mixedTest,prefix+"_mix","1. Test mezclado")}
+        ${createDropdowns(screen.mixedBlanks,prefix+"_mixed","2. Esquema mixto con desplegables")}
 
-    function checkBlanks(prefix, raw){
-      const blanks = typeof raw === "string" ? JSON.parse(raw) : raw;
-      let score = 0;
-      blanks.forEach((b,i)=>{
-        const input = document.getElementById(`${prefix}_blank_${i}`);
-        const value = normalize(input.value);
-        const good = b.answers.some(a => normalize(a) === value);
-        input.style.borderColor = good ? "#8fc79b" : "#d7a18f";
-        input.style.background = good ? "#f2fbf5" : "#fff4f1";
-        if(good) score++;
-      });
-      const ok = score === blanks.length;
-      setFeedback(`${prefix}_blank_feedback`, ok, ok ? `Muy bien: ${score}/${blanks.length}.` : `Has acertado ${score}/${blanks.length}.`);
-      if(ok) markDone();
-    }
+        <div class="card challenge">
+          <h3>3. Detecta el error</h3>
+          <p class="small">Lee cada frase, detecta qué está mal y luego comprueba la corrección.</p>
+          <div class="error-box">
+            ${screen.errorItems.map((item,i)=>`
+              <div class="error-item">
+                <p><strong>Frase ${i+1}:</strong> ${item.wrong}</p>
+                <button class="btn-secondary" onclick='toggleModel("${prefix}_error_${i}")'>Ver corrección</button>
+                <div class="model" id="${prefix}_error_${i}">${item.correction}</div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
 
-    function checkMCQ(prefix, raw){
-      const mcq = typeof raw === "string" ? JSON.parse(raw) : raw;
-      let score = 0;
-      mcq.forEach((q,i)=>{
-        const sel = document.querySelector(`input[name="${prefix}_mcq_${i}"]:checked`);
-        if(sel && Number(sel.value) === q.correct) score++;
-      });
-      const ok = score === mcq.length;
-      setFeedback(`${prefix}_mcq_feedback`, ok, ok ? `Excelente: ${score}/${mcq.length}.` : `Resultado: ${score}/${mcq.length}.`);
-      if(ok) markDone();
-    }
+        <div class="card">
+          <h3>4. Pregunta corta global</h3>
+          <div class="question">
+            <p>${screen.shortGlobal.q}</p>
+            <textarea placeholder="Escribe tu respuesta..."></textarea>
+            <div class="actions">
+              <button class="btn-secondary" onclick='toggleModel("${prefix}_global_model")'>Ver modelo final</button>
+            </div>
+            <div class="model" id="${prefix}_global_model">
+              <strong>Modelo final:</strong><br>${screen.shortGlobal.model}
+            </div>
+          </div>
+        </div>
+      </div>
 
-    function checkTF(prefix, raw){
-      const tf = typeof raw === "string" ? JSON.parse(raw) : raw;
-      let score = 0;
-      tf.forEach((q,i)=>{
-        const sel = document.querySelector(`input[name="${prefix}_tf_${i}"]:checked`);
-        if(sel && sel.value === String(q.correct)) score++;
-      });
-      const ok = score === tf.length;
-      setFeedback(`${prefix}_tf_feedback`, ok, ok ? `Perfecto: ${score}/${tf.length}.` : `Has acertado ${score}/${tf.length}.`);
-      if(ok) markDone();
-    }
+      <div>
+        <div class="card">
+          <h3>Cómo usar este reto</h3>
+          <p class="small">
+            1. Haz el test mezclado.<br>
+            2. Completa el esquema mixto.<br>
+            3. Detecta y corrige errores.<br>
+            4. Responde la pregunta global.<br>
+            5. Revisa el modelo final.
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
-    function checkMiniExam(prefix, rawMcq, rawBlank, rawTf){
-      const mcqItem = typeof rawMcq === "string" ? JSON.parse(rawMcq) : rawMcq;
-      const blankItem = typeof rawBlank === "string" ? JSON.parse(rawBlank) : rawBlank;
-      const tfItem = typeof rawTf === "string" ? JSON.parse(rawTf) : rawTf;
+function createFinalExam(prefix){
+  const bankMcq = [
+    {q:"¿Qué marca el inicio de la Historia?", options:["La rueda","La escritura","La pirámide"], correct:1},
+    {q:"¿Qué ríos pertenecen a Mesopotamia?", options:["Nilo y Tajo","Tigris y Éufrates","Danubio y Rin"], correct:1},
+    {q:"¿Qué escritura corresponde a Egipto?", options:["Cuneiforme","Jeroglífica","Latina"], correct:1},
+    {q:"¿Quién unificó Egipto?", options:["Narmer","Hammurabi","Ciro"], correct:0},
+    {q:"¿Qué edificio era un templo mesopotámico?", options:["Zigurat","Mastaba","Pirámide"], correct:0},
+    {q:"¿Qué dios pesaba el corazón?", options:["Anubis","Ra","Tot"], correct:0},
+    {q:"¿Cómo era la arquitectura egipcia?", options:["Adintelada","Con bóvedas","Con arcos"], correct:0}
+  ];
 
-      let score = 0;
+  const bankBlanks = [
+    {label:"Río principal de Egipto", answers:["nilo"], options:["Nilo","Tigris","Éufrates","Tajo"]},
+    {label:"Escritura de Mesopotamia", answers:["cuneiforme"], options:["Cuneiforme","Jeroglífica","Latina","Griega"]},
+    {label:"Edificio religioso mesopotámico", answers:["zigurat"], options:["Zigurat","Pirámide","Templo","Hipogeo"]},
+    {label:"Rey que unificó Egipto", answers:["narmer"], options:["Narmer","Ciro","Hammurabi","Sargón"]},
+    {label:"Dios de los muertos", answers:["osiris"], options:["Osiris","Ra","Tot","Anubis"]},
+    {label:"Tumbas egipcias por orden", answers:["mastaba piramide e hipogeo","mastaba piramide hipogeo"], options:["Mastaba, pirámide e hipogeo","Hipogeo, templo y palacio","Zigurat, mastaba y pirámide","Pirámide, foro y templo"]}
+  ];
 
-      const mcqSel = document.querySelector(`input[name="${prefix}_exam_mcq"]:checked`);
-      if(mcqSel && Number(mcqSel.value) === mcqItem.correct) score++;
+  const bankTF = [
+    {q:"La arquitectura egipcia era adintelada.", correct:true},
+    {q:"Los vasos canopes se usaban para guardar joyas.", correct:false},
+    {q:"El faraón tenía poder absoluto.", correct:true},
+    {q:"La escritura jeroglífica nació en Mesopotamia.", correct:false},
+    {q:"La escultura mesopotámica solía ser frontal e idealizada.", correct:true},
+    {q:"Mesopotamia se organizó en un solo reino desde el principio.", correct:false}
+  ];
 
-      const blankVal = normalize(document.getElementById(`${prefix}_exam_blank`).value);
-      if(blankItem.answers.some(a => normalize(a) === blankVal)) score++;
+  const bankShort = [
+    {q:"Explica por qué Mesopotamia y Egipto se llaman civilizaciones hidráulicas.", model:"Se llaman así porque aprovecharon grandes ríos para desarrollar la agricultura mediante diques y canales."},
+    {q:"Escribe una diferencia entre cuneiforme y jeroglífica.", model:"La cuneiforme se hacía en arcilla con punzón y la jeroglífica usaba pictogramas en piedra, paredes o papiro."},
+    {q:"Compara la organización política de Mesopotamia y Egipto.", model:"Mesopotamia se organizó en ciudades-Estado con reyes, mientras que Egipto fue un Estado unificado gobernado por el faraón."},
+    {q:"Relaciona religión funeraria y momificación en Egipto.", model:"La momificación era importante porque los egipcios creían que el cuerpo debía conservarse para acceder al reino de Osiris."}
+  ];
 
-      const tfSel = document.querySelector(`input[name="${prefix}_exam_tf"]:checked`);
-      if(tfSel && tfSel.value === String(tfItem.correct)) score++;
+  const pickedMcq = shuffle([...bankMcq]).slice(0,4);
+  const pickedBlanks = shuffle([...bankBlanks]).slice(0,3);
+  const pickedTF = shuffle([...bankTF]).slice(0,3);
+  const pickedShort = shuffle([...bankShort]).slice(0,2);
 
-      const shortVal = document.getElementById(`${prefix}_exam_short`).value.trim();
-      if(shortVal.length >= 12) score++;
+  return `
+    <div class="grid">
+      <div>
+        <div class="card lead">
+          <h3>Instrucciones</h3>
+          <p>Haz este examen final como repaso general. Corrige cada parte y usa los modelos para afianzar lo esencial.</p>
+        </div>
 
-      const ok = score >= 3;
-      setFeedback(`${prefix}_exam_feedback`, ok, ok ? `Buen trabajo: ${score}/4.` : `Has conseguido ${score}/4. Repite después de repasar.`);
-      if(ok) markDone();
-    }
+        ${createMCQ(pickedMcq,prefix+"_fmcq","Test general")}
+        ${createDropdowns(pickedBlanks,prefix+"_fblank","Completar conceptos clave")}
+        ${createTF(pickedTF,prefix+"_ftf","Verdadero o falso general")}
+        ${createShort(pickedShort,prefix+"_fshort","Preguntas cortas finales")}
+      </div>
 
-    function markCurrentDone(){
-      markDone();
-      alert("Pantalla marcada como terminada.");
-    }
+      <div>
+        <div class="card challenge">
+          <h3>Objetivo final</h3>
+          <p class="small">
+            Al terminar deberías dominar: civilizaciones hidráulicas, escritura, Mesopotamia, Egipto, religión, momificación, juicio de Osiris y arte.
+          </p>
+          <div class="actions">
+            <button class="btn-accent" onclick="markCurrentDone()">Marcar examen como terminado</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
-    function shuffle(arr){
-      for(let i=arr.length-1;i>0;i--){
-        const j = Math.floor(Math.random()*(i+1));
-        [arr[i],arr[j]] = [arr[j],arr[i]];
-      }
-      return arr;
-    }
+function renderScreen(){
+  const s = screens[state.current];
+  const prefix = "s" + state.current;
 
-    prevBtn.addEventListener("click", goPrev);
-    nextBtn.addEventListener("click", goNext);
-    jumpSelect.addEventListener("change", e=>{
-      state.current = Number(e.target.value);
-      renderScreen();
-    });
+  screenPill.textContent = `${s.title} · ${state.current + 1}/${screens.length}`;
+  jumpSelect.value = state.current;
 
-    window.goPrev = goPrev;
-    window.goNext = goNext;
-    window.toggleModel = toggleModel;
-    window.checkBlanks = checkBlanks;
-    window.checkMCQ = checkMCQ;
-    window.checkTF = checkTF;
-    window.checkMiniExam = checkMiniExam;
-    window.markCurrentDone = markCurrentDone;
+  let html = `
+    <div class="screen-head">
+      <div>
+        <h2>${s.title}</h2>
+        <p>${s.subtitle}</p>
+      </div>
+      <span class="pill">${s.type === "challenge" ? "Reto acumulativo" : s.type === "final" ? "Examen final" : "Pantalla de estudio"}</span>
+    </div>
+  `;
 
-    fillJump();
-    updateProgress();
+  if(s.type === "normal"){
+    html += `
+      <div class="grid">
+        <div>
+          <div class="card lead">
+            <h3>A. Texto breve</h3>
+            <p>${s.text}</p>
+          </div>
+
+          ${createDropdowns(s.blanks,prefix,"B. Esquema con desplegables")}
+          ${createMCQ(s.mcq,prefix,"C. Tres preguntas tipo test")}
+          ${createTF(s.tf,prefix,"D. Dos verdadero o falso")}
+        </div>
+
+        <div>
+          ${createShort(s.short,prefix,"E-F. Dos preguntas cortas + modelos")}
+          ${createMiniExam(s,prefix)}
+        </div>
+      </div>
+    `;
+  }else if(s.type === "challenge"){
+    html += createChallenge(s,prefix);
+  }else if(s.type === "final"){
+    html += createFinalExam(prefix);
+  }
+
+  html += `
+    <div class="meta-nav">
+      <button class="btn-secondary" ${state.current===0 ? "disabled" : ""} onclick="goPrev()">← Anterior</button>
+      <button class="btn-primary" ${state.current===screens.length-1 ? "disabled" : ""} onclick="goNext()">Siguiente →</button>
+    </div>
+  `;
+
+  screenContainer.innerHTML = html;
+  prevBtn.disabled = state.current===0;
+  nextBtn.disabled = state.current===screens.length-1;
+}
+
+function checkSingleDropdown(prefix, index, rawBlank){
+  const blank = typeof rawBlank === "string" ? JSON.parse(rawBlank) : rawBlank;
+  const select = document.getElementById(`${prefix}_blank_${index}`);
+  const stateBox = document.getElementById(`${prefix}_state_${index}`);
+  if(!select || !stateBox) return false;
+
+  const value = normalize(select.value);
+  const good = blank.answers.some(a => normalize(a) === value);
+
+  select.style.borderColor = good ? "#8fc79b" : (value ? "#d7a18f" : "#dfc9b1");
+  select.style.background = good ? "#f2fbf5" : (value ? "#fff4f1" : "white");
+
+  if(!value){
+    stateBox.className = "mini-state";
+    stateBox.textContent = "Pendiente";
+    return false;
+  }
+
+  stateBox.className = "mini-state " + (good ? "ok" : "bad");
+  stateBox.textContent = good ? "Correcto" : "Revisa";
+  return good;
+}
+
+function checkAllDropdowns(prefix, raw){
+  const blanks = typeof raw === "string" ? JSON.parse(raw) : raw;
+  let score = 0;
+
+  blanks.forEach((b,i)=>{
+    const good = checkSingleDropdown(prefix, i, b);
+    if(good) score++;
+  });
+
+  const ok = score === blanks.length;
+  setFeedback(
+    `${prefix}_blank_feedback`,
+    ok,
+    ok ? `Muy bien: ${score}/${blanks.length}. Esquema perfecto.` : `Has acertado ${score}/${blanks.length}. Revisa las opciones marcadas en rojo.`
+  );
+
+  if(ok) markDone();
+}
+
+function checkMCQ(prefix, raw){
+  const mcq = typeof raw === "string" ? JSON.parse(raw) : raw;
+  let score = 0;
+
+  mcq.forEach((q,i)=>{
+    const sel = document.querySelector(`input[name="${prefix}_mcq_${i}"]:checked`);
+    if(sel && Number(sel.value) === q.correct) score++;
+  });
+
+  const ok = score === mcq.length;
+  setFeedback(`${prefix}_mcq_feedback`, ok, ok ? `Excelente: ${score}/${mcq.length}.` : `Resultado: ${score}/${mcq.length}.`);
+  if(ok) markDone();
+}
+
+function checkTF(prefix, raw){
+  const tf = typeof raw === "string" ? JSON.parse(raw) : raw;
+  let score = 0;
+
+  tf.forEach((q,i)=>{
+    const sel = document.querySelector(`input[name="${prefix}_tf_${i}"]:checked`);
+    if(sel && sel.value === String(q.correct)) score++;
+  });
+
+  const ok = score === tf.length;
+  setFeedback(`${prefix}_tf_feedback`, ok, ok ? `Perfecto: ${score}/${tf.length}.` : `Has acertado ${score}/${tf.length}.`);
+  if(ok) markDone();
+}
+
+function checkMiniExam(prefix, rawMcq, rawBlank, rawTf){
+  const mcqItem = typeof rawMcq === "string" ? JSON.parse(rawMcq) : rawMcq;
+  const blankItem = typeof rawBlank === "string" ? JSON.parse(rawBlank) : rawBlank;
+  const tfItem = typeof rawTf === "string" ? JSON.parse(rawTf) : rawTf;
+
+  let score = 0;
+
+  const mcqSel = document.querySelector(`input[name="${prefix}_exam_mcq"]:checked`);
+  if(mcqSel && Number(mcqSel.value) === mcqItem.correct) score++;
+
+  const blankVal = normalize(document.getElementById(`${prefix}_exam_blank`).value);
+  if(blankItem.answers.some(a => normalize(a) === blankVal)) score++;
+
+  const tfSel = document.querySelector(`input[name="${prefix}_exam_tf"]:checked`);
+  if(tfSel && tfSel.value === String(tfItem.correct)) score++;
+
+  const shortVal = document.getElementById(`${prefix}_exam_short`).value.trim();
+  if(shortVal.length >= 12) score++;
+
+  const ok = score >= 3;
+  setFeedback(`${prefix}_exam_feedback`, ok, ok ? `Buen trabajo: ${score}/4.` : `Has conseguido ${score}/4. Repite después de repasar.`);
+  if(ok) markDone();
+}
+
+function markCurrentDone(){
+  markDone();
+  alert("Pantalla marcada como terminada.");
+}
+
+function goPrev(){
+  if(state.current > 0){
+    state.current--;
     renderScreen();
-  </script>
+  }
+}
+
+function goNext(){
+  if(state.current < screens.length - 1){
+    state.current++;
+    renderScreen();
+  }
+}
+
+prevBtn.addEventListener("click", goPrev);
+nextBtn.addEventListener("click", goNext);
+jumpSelect.addEventListener("change", e=>{
+  state.current = Number(e.target.value);
+  renderScreen();
+});
+
+window.goPrev = goPrev;
+window.goNext = goNext;
+window.toggleModel = toggleModel;
+window.checkSingleDropdown = checkSingleDropdown;
+window.checkAllDropdowns = checkAllDropdowns;
+window.checkMCQ = checkMCQ;
+window.checkTF = checkTF;
+window.checkMiniExam = checkMiniExam;
+window.markCurrentDone = markCurrentDone;
+
+fillJump();
+updateProgress();
+renderScreen();
+</script>
 </body>
 </html>
